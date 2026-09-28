@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>pyPTA - Market Dashboard</title><link rel="stylesheet" href="{{ url_for('static',filename='dashboard.css') }}"><link rel="stylesheet" href="{{ url_for('static',filename='market_brief.css') }}"></head>
+<body data-refresh="{{ refresh }}" data-generation="{{ generation }}"><main>
+{% from 'signal_lights.html' import signal_lights with context %}
+<header class="market-header"><div class="market-title"><div class="eyebrow">pyPTA · live market context</div><h1>Market Dashboard</h1><p class="muted">Live price, NN probabilities, SMC levels and options positioning</p></div>{% include 'market_brief.html' %}<small class="market-scan-time">Last scan {{ time(s.updated_ms) }}</small></header>
+{% include 'navigation.html' %}
+{% if s.neural_model %}<p class="notice" data-applied-nn-model="{{ s.neural_model.artifact_id }}">Applied NN model: <strong>{{ s.neural_model.display_name }}</strong> · <a href="{{ url_for('settings_page') }}#nn-model-title">Model details</a></p>{% endif %}
+<div class="assets market-assets">
+{% for name,cfg in assets.items() %}{% set row=s.market.get(name,{}) %}{% set nn=row.get('nn',{}) %}{% set quote=row.get('quote') or {} %}{% set signal=nn.get('signal') %}{% set suggestion=row.get('suggestion') %}
+<article class="asset" data-refresh-key="asset:{{ name }}">
+<div class="asset-head"><div><h2>{{ name }}</h2><small>{{ cfg.symbol }}</small></div>
+<div class="mini-chart" data-asset="{{ name }}" data-digits="{{ digits[name] }}"><canvas role="img" aria-label="{{ name }} live 4H candlestick chart">Live price chart</canvas><div class="chart-meta">4H candles · <span class="chart-state">Loading…</span></div></div>
+<div class="right live-quote" data-live-price data-asof="{{ quote.get('asof_ms','') }}"><div class="quote" data-price-value>{{ money(quote.get('last'),digits[name]) }}</div><small data-price-status>{{ 'Live price · USD' if quote and now-quote.get('asof_ms',0) <= 30000 else 'Last price · USD' if quote else 'Waiting for price' }}</small></div></div>
+<section class="market-summary" data-market-expires="{{ row.get("asof_ms",0)+30000 }}"><h3>SMC price guide</h3>
+<div class="levels"><div><small>Lowest qualified entry</small><strong data-market-level>{{ money(suggestion.entry_price,digits[name]) if suggestion and now-row.get('asof_ms',0) < 30000 else 'Pending' }}</strong></div>
+<div><small>Highest eligible target</small><strong data-market-level>{{ money(suggestion.exit_price,digits[name]) if suggestion and now-row.get('asof_ms',0) < 30000 else 'Pending' }}</strong></div>
+<div><small>Suggested strategy stop</small><strong data-market-level>{{ money(suggestion.stop,digits[name]) if suggestion and now-row.get('asof_ms',0) < 30000 else 'Pending' }}</strong></div></div>
+{% if suggestion %}<p class="muted">{{ suggestion.method|capitalize }} · nearest SMC target {{ money(suggestion.nearest_target,digits[name]) }}. The upper target is the highest eligible untaken liquidity in the available candles, not a prediction of the highest future price.</p>{% else %}<p class="muted">{{ row.get('smc_long',{}).get('status','Waiting for current SMC measurements') if row.get('smc_long') else 'Waiting for current SMC measurements' }}. Levels appear when the strategy qualifies.</p>{% endif %}
+</section>
+{% include 'structure_context.html' %}
+<section data-position-signal data-signal-expires="{{ nn.get('expires_ms',0) }}">
+<div class="signal-heading"><h3>NN market probabilities</h3><small>Latest completed 4H candle</small></div>
+{{ signal_lights(signal.label if signal and nn.get('expires_ms',0)>now else none, name ~ ' NN market probabilities', signal.probabilities if signal else {}) }}
+<p class="muted" data-position-action>{{ 'NN ' ~ signal.label ~ ' · candle closed ' ~ time(signal.signal_end) if signal and nn.get('expires_ms',0)>now else nn.get('error') or 'Waiting for current NN probabilities' }}</p>
+<small>Classifier probabilities update after each completed 4H candle. They describe the model's market reading.</small>
+{% if signal and signal.get('features') %}<details><summary>{{ signal.features|length }} {{ 'final-row measurements · ' ~ s.neural_model.lookback ~ '-row sequence' if s.neural_model and s.neural_model.get('lookback',1)>1 else 'input measurements' }}</summary><dl>{% for label,value in signal.features.items() %}<dt>{{ label }}</dt><dd>{{ measure(value) }}</dd>{% endfor %}</dl></details>{% endif %}
+</section>
+{% set momentum=row.get('momentum') %}<section class="momentum-summary"><h3>Entry-timeframe momentum</h3><strong class="{{ 'momentum-bearish' if momentum and momentum.direction == 'bearish' else 'momentum-bullish' if momentum and momentum.direction == 'bullish' else 'wait' }}">{{ momentum.direction|upper if momentum else 'WAITING' }}</strong>
+{% if momentum %}<small> · {{ s.rules.smc_entry_minutes }}M structure · closed {{ time(momentum.end_ms) }}</small><p class="muted">Swing high {{ money(momentum.swing_high,digits[name]) }} · swing low {{ money(momentum.swing_low,digits[name]) }} · break {{ money(momentum.break_level,digits[name]) }}</p>{% endif %}</section>
+{% if row.get('error') %}<p class="wait">{{ row.error }}</p>{% endif %}
+{% with gex_view='market' %}{% include 'gex.html' %}{% endwith %}
+{% for key,label in [('smc_long','Bullish SMC qualification'),('smc_short','Bearish SMC qualification')] %}{% set strategy=row.get(key) %}
+<section class="strategy"><h3>{{ label }}</h3><small>Measurements from {{ time(row.get("asof_ms")) }}</small><p class="status">{{ strategy.status if strategy else 'WAITING FOR SCAN' }}</p>
+{% if strategy %}<details data-panel="{{ name }}:market:{{ key }}"><summary>Qualification measurements ({{ strategy.checks|length }})</summary><ul class="checks">{% for c in strategy.checks %}<li><div class="check-title"><span class="condition-box {{ c.status }}" aria-hidden="true">{{ '✓' if c.status=='pass' else '−' if c.status=='context' else '' }}</span><span class="pill {{ c.status }}">{{ c.status }}</span><span>{{ c.label }}</span></div>
+<div class="measure-grid">{% for required,heading in [(false,'Measured'),(true,'Required')] %}{% if not required or c.required != none %}<div class="measure-group"><div class="measure-heading">{{ heading }}</div><dl>{% for label,value in measurement_rows(c,required,digits[name]) %}<div class="measure-item"><dt>{{ label }}</dt><dd>{{ value }}</dd></div>{% endfor %}</dl></div>{% endif %}{% endfor %}</div>{% if c.note %}<small class="evidence-time">{{ c.note }}</small>{% endif %}{% if c.candle_ms != none %}<small class="evidence-time">{{ "Observed" if c.key in ["entry","validity"] else "Candle opened" }} {{ time(c.candle_ms) }}</small>{% endif %}</li>{% endfor %}</ul></details>{% endif %}</section>
+{% endfor %}
+</article>{% endfor %}</div>
+<p class="footer">Market measurements use completed candles and current quotes. Adjust SMC criteria in Settings. Watch the separate NN simulation in <a href="{{ url_for('paper_page') }}">Paper Trading</a>.</p>
+{% include 'page_footer.html' %}
+<p id="refresh-status" class="muted" role="status"></p>
+</main><script src="{{ url_for('static',filename='live_refresh.js') }}" defer></script><script src="{{ url_for('static',filename='dashboard.js') }}" defer></script><script src="{{ url_for('static',filename='gex.js') }}" defer></script><script src="{{ url_for('static',filename='market_brief.js') }}" defer></script></body></html>

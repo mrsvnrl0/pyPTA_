@@ -1,0 +1,6 @@
+The bundled Python runtime and dependencies retain their upstream license
+metadata. Core dependencies include Flask (BSD-3-Clause), Requests (Apache-2.0),
+Waitress (Zope Public License), NumPy (BSD family), pandas (BSD-3-Clause),
+TA-Lib (BSD-3-Clause), h5py (BSD-3-Clause), Pillow (HPND), and OpenAI's Python
+SDK (Apache-2.0). Check each package's metadata before redistributing modified
+builds.

@@ -1,0 +1,11 @@
+.market-header{display:grid;grid-template-columns:minmax(240px,1fr) minmax(0,2fr);column-gap:28px;row-gap:8px;align-items:start}
+.market-title{grid-column:1;grid-row:1}.market-title>p{max-width:360px}.market-scan-time{grid-column:1;grid-row:2;align-self:start;font-size:11px}
+.market-brief{grid-column:2;grid-row:1/3;min-width:0;border-left:2px solid #508b78;padding:0 0 0 20px}
+.brief-heading,.brief-footer,.brief-footer>div{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.brief-heading h2{font-size:15px;letter-spacing:.1px}.brief-badge{font-size:10px;color:var(--green);letter-spacing:.5px}.brief-status{font-size:11px;margin:5px 0}.brief-status[data-problem="1"]{color:var(--amber)}
+.brief-copy{font-size:12px;line-height:1.65;overflow-wrap:anywhere}.brief-copy p{white-space:pre-line;margin:6px 0}.brief-copy a{font-size:10px;vertical-align:super;margin:0 2px;color:var(--green)}
+.brief-footer{font-size:10px;margin-top:8px}.brief-footer>div{gap:12px}.brief-refresh{font-size:10px;padding:4px 8px;min-height:28px}.brief-coverage{font-size:10px;margin-bottom:0}.market-brief a{color:var(--green)}.market-brief [hidden]{display:none}.market-brief[data-state="stale"]{border-left-color:var(--amber)}
+[data-brief-search]{margin-top:8px;overflow-wrap:anywhere;max-width:100%}
+.market-brief a:focus-visible,.brief-refresh:focus-visible{outline:2px solid var(--green);outline-offset:3px}.market-brief a:hover{color:#b4f7d9}.brief-refresh{touch-action:manipulation}
+@media(min-width:1650px){.market-header{grid-template-columns:minmax(300px,1fr) minmax(0,2fr) 160px}.market-scan-time{grid-column:3;grid-row:1;text-align:right}.market-brief{grid-row:1}.brief-copy{font-size:13px}}
+@media(max-width:900px){.market-header{grid-template-columns:minmax(0,1fr)}.market-title{grid-column:1;grid-row:1}.market-scan-time{grid-column:1;grid-row:2}.market-brief{grid-column:1;grid-row:3;margin-top:12px;padding:12px 0 0;border-left:0;border-top:2px solid #508b78}.brief-copy{font-size:13px}.brief-refresh{min-height:36px}.brief-footer{font-size:11px}.market-brief[data-state="stale"]{border-top-color:var(--amber)}}

@@ -1,0 +1,21 @@
+{% from 'signal_lights.html' import signal_lights with context %}
+{% set combined=row.get('combined',{}) %}
+{% set signal=combined.get('signal') %}
+{% set current=not row.get('scan_error') and combined.get('expires_ms',0) > now %}
+<section class="combined-paper-signal" data-position-signal data-signal-expires="{{ combined.get('expires_ms',0) }}">
+<div class="signal-heading"><h3>Combined paper action</h3><small>Strategy levels + NN confirmation</small></div>
+{{ signal_lights(combined.get('action') if current else none, name ~ ' combined paper action') }}
+<p><strong data-position-action>{{ combined.get('action_label','WAITING FOR SCAN') if current else 'WAITING FOR FRESH READING' }}</strong></p>
+<p class="muted">{{ combined.get('reason','Waiting for strategy levels and the latest completed 4H NN reading.') }}</p>
+<p><strong>NN prediction: {{ signal.label if signal and combined.get('signal_expires_ms',0) > now else 'unavailable' }}</strong>
+{% if signal %}<br><small>4H candle closed {{ time(signal.signal_end) }} · Used for confirmation until the next 4H close.</small>{% endif %}</p>
+{% if signal %}<details><summary>NN class probabilities</summary><p>{% for state in ['BUY','HOLD','SELL'] %}{{ state }} {{ num(signal.get('probabilities',{}).get(state,0)*100,2) }}%{{ ' · ' if not loop.last else '' }}{% endfor %}</p><small>Model {{ signal.model_id|default('') }}</small></details>{% endif %}
+{% set levels=combined.get('levels') or row.get('reclaim',{}).get('plan') %}
+{% if levels %}<div class="levels">
+<div><small>{{ 'Recorded entry' if levels.get('status') else 'Calculated entry' }}</small><strong>{{ money(levels.get('entry',levels.get('limit')),digits[name]) }}</strong></div>
+<div><small>Strategy stop</small><strong>{{ money(levels.get('stop'),digits[name]) }}</strong></div>
+{% if levels.get('target') %}<div><small>Strategy take-profit</small><strong>{{ money(levels.target,digits[name]) }}</strong></div>
+{% else %}<div><small>TP1 / TP2</small><strong>{{ money(levels.get('tp1'),digits[name]) }} / {{ money(levels.get('tp2'),digits[name]) }}</strong></div>{% endif %}
+</div>{% endif %}
+<small>Paper observation {{ time(combined.get('observed_ms')) }}. BUY/SELL lights describe a recorded paper action; a pending level alone is not an entry.</small>
+</section>

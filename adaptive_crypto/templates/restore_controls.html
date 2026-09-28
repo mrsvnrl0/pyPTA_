@@ -1,0 +1,22 @@
+<section class="settings-card" id="restore-controls" aria-labelledby="restore-title">
+<h2 id="restore-title">Restore a backup</h2>
+<p>Review the saved settings and trading records in <code>backup/latest.zip</code> before replacing this study. Restore first backs up the current settings and data to the same archive. Historical queued alerts will be cancelled.</p>
+<p class="muted">Guided restore supports complete SQLite backups compatible with the running paper strategy. It restores every saved history, including inactive strategy records.</p>
+<button type="button" id="preview-restore" data-url="/api/database/restore/preview">Preview backup</button>
+<p id="restore-result" role="status" aria-live="polite"></p>
+<dialog id="restore-dialog" aria-labelledby="restore-confirm-title">
+<h3 id="restore-confirm-title">Restore these settings and records?</h3>
+<p id="restore-date"></p>
+<div id="restore-counts"></div>
+<details><summary>Saved settings in the backup</summary><pre id="restore-settings" style="max-height:16rem;overflow:auto;white-space:pre-wrap"></pre></details>
+<p id="restore-settings-note"></p>
+<p>This replaces all current settings and trading history. Your current study becomes <code>backup/latest.zip</code>, replacing the backup shown here. Queued alerts from the restored history will not be sent.</p>
+<form id="confirm-restore-form" action="/api/database/restore" method="post">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<input type="hidden" name="token" value="">
+<input type="hidden" name="confirm" value="restore">
+<div class="strategy-control-actions"><button type="submit" class="danger-button">Back up current study and restore</button><button type="button" class="secondary" id="cancel-restore" autofocus>Cancel</button></div>
+</form>
+<p id="restore-confirm-result" role="status" aria-live="polite"></p>
+</dialog>
+</section>

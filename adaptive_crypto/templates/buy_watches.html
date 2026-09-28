@@ -1,0 +1,31 @@
+{% if s.is_smc and s.rules.market_mode == 'spot' %}
+<section class="buy-watches" aria-label="SHORT buy watches">
+<h3>SHORT · Watch for a lower spot buy</h3>
+<p class="muted">Use a SHORT watch when you plan to buy after a bearish move. The reference price starts the watch; the lower sweep level is the buy price. Bearish momentum says WAIT TO BUY. A fresh ask at or below the saved level says BUY SPOT. This watch holds no crypto and has no P/L. After purchasing, use Add position to record your actual Spot buy.</p>
+<details data-panel="holdings:buy-watch"><summary>Add SHORT buy watch</summary>
+<form class="position-form buy-watch-form" method="post" action="{{ url_for('open_buy_watch') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}"><input type="hidden" name="request_id" value="{{ position_request_id }}">
+<label>Asset<select name="asset" required>{% for asset, cfg in assets.items() %}<option value="{{ asset }}">{{ asset }} · {{ cfg.symbol }}</option>{% endfor %}</select></label>
+<label>Watch reference · USD<input name="reference_price" type="number" min="0.000000000000001" step="any" required placeholder="e.g. 2465.89"></label>
+<label>Lower buy level · USD<input name="buy_price" type="number" min="0.000000000000001" step="any" placeholder="Optional · e.g. 2439.7795"></label>
+<label>Planned quantity<input name="quantity" type="number" min="0.000000000000001" step="any" required placeholder="Asset units"></label>
+{% include 'target_method.html' %}
+<p class="muted">Leave the buy level blank to use your target method: SMC selects the nearest untaken {{ s.setup_minutes }}M liquidity low; SMC + GEX prefers an eligible aligned low, which can be farther away, and falls back to nearest SMC when no eligible alignment is available. The level must be below the reference and current price, extended by your {{ measure(s.rules.smc_tp_sweep_buffer_bps) }} bps sweep buffer. A manually entered buy level takes priority. All amounts are USD. A watch starts only after observing price above its buy level.</p>
+<div class="form-actions"><button type="submit">Start SHORT buy watch</button><button type="reset" class="secondary">Clear</button></div>
+<p class="form-result" role="alert"></p>
+</form></details>
+{% for w in s.holdings.get('buy_watches', [])|reverse if w.status in ['watching', 'reached'] %}
+<div class="trade buy-watch-card"><h4>{{ w.asset }} · SHORT buy watch · {{ w.status|capitalize }}</h4>
+<small>Watch #{{ w.id[:8] }} · {{ w.symbol }} · Started {{ time(w.created_ms) }}</small>
+{% if w.target_mode is defined %}<p class="muted">Target method: {{ 'SMC + GEX' if w.target_mode == 'gex_smc' else 'SMC' }}{% if w.target_source == 'manual' %} · Manual buy level{% endif %}</p>{% endif %}
+<div class="levels"><div><small>Reference · not a purchase</small><strong>{{ money(w.reference_price,digits.get(w.asset,3)) }}</strong></div><div><small>BUY SPOT at lower sweep</small><strong>{{ money(w.buy_price,8) if w.buy_price else 'Waiting for liquidity low' }}</strong></div><div><small>Current ask</small><strong>{{ money(w.current_ask,digits.get(w.asset,3)) }}</strong><small>{{ time(w.current_quote_ms) }}</small></div><div><small>{{ s.entry_minutes }}M momentum</small><strong>{{ w.direction|capitalize }}</strong><small>{{ time(w.momentum_end_ms) if w.momentum_end_ms is defined else 'Waiting for completed candles' }}</small></div></div>
+<p>Planned {{ measure(w.quantity) }} {{ w.asset }} · {{ 'Buy level observed. Record a holding only after your actual purchase.' if w.status == 'reached' else 'Waiting for a future buy-level touch.' }}</p>
+{{ target_selection(w.get("target_selection")) }}
+{% if w.error %}<p class="wait">{{ w.error }}</p>{% endif %}
+{% if w.latest_alert %}{% set a=w.latest_alert %}<small data-alert-current="{{ '1' if a.is_current else '0' }}" data-alert-expires="{{ a.expires_ms|default(0) }}">{{ 'Current alert' if a.is_current else 'Past or cancelled alert · no current instruction' }}</small><p><strong>{{ a.action_label }}</strong><br>{{ a.summary }}</p><small>Telegram {{ a.status }} · {{ time(a.observed_ms) }}</small>{% endif %}
+<form class="position-form" method="post" action="{{ url_for('cancel_buy_watch', watch_id=w.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><div class="form-actions"><button type="submit" class="secondary">Dismiss watch</button></div><p class="form-result" role="alert"></p></form>
+</div>{% endfor %}
+{% set inactive_watches = s.holdings.get('buy_watches', [])|rejectattr('status','in',['watching','reached'])|list %}
+{% if inactive_watches %}<details data-panel="holdings:past-buy-watches"><summary>Past SHORT buy watches ({{ inactive_watches|length }})</summary>{% for w in inactive_watches|reverse %}<p>{{ w.asset }} #{{ w.id[:8] }} · {{ w.status|capitalize }} · Reference {{ money(w.reference_price) }} · Buy level {{ money(w.buy_price,8) }}<br><small>{{ w.error }}</small></p>{% endfor %}</details>{% endif %}
+</section>
+{% endif %}

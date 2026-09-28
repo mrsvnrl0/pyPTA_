@@ -1,0 +1,10 @@
+PyArmor runtime notice
+
+This installer contains the PyArmor runtime component used to protect the
+dashboard's Python modules. PyArmor is distributed under its Free To Use But
+Restricted terms. The build uses it only on the dashboard source owned by the
+publisher. The installed computer does not need PyArmor installed or licensed
+to run the protected application.
+
+Project and terms: https://pyarmor.readthedocs.io/en/stable/licenses.html
+Source: https://github.com/dashingsoft/pyarmor

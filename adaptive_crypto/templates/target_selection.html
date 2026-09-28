@@ -1,0 +1,3 @@
+{% macro target_selection(selection) -%}
+{% if selection %}<p class="target-selection"><small><strong>{{ 'GEX + SMC target' if selection.method == 'gex_smc' else 'SMC target' }}</strong> · {{ selection.reason }}{% for match in selection.matches %}<br>{{ match.key|capitalize }} {{ money(match.gex_price,8) }} ↔ {{ match.poi.label }} {{ money(match.poi.price,8) }}{% endfor %}<br>Selected {{ time(selection.selected_ms) }}{% if selection.gex_asof_ms is defined %} · GEX observed {{ time(selection.gex_asof_ms) }}{% endif %}</small></p>{% endif %}
+{%- endmacro %}

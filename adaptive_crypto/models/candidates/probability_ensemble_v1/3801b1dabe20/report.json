@@ -1,0 +1,2202 @@
+{
+  "architecture_id": "probability_ensemble_v1",
+  "comparison_evaluation": {
+    "artifact_id": "3801b1dabe200b4c4b24182f9b566ecb0aedb45ad505bf93b38b47e8ebd26795",
+    "baselines": {
+      "cash_no_trade": {
+        "final_net_liquidation_equity": 10000.0,
+        "net_return": 0.0
+      },
+      "equal_cash_buy_and_hold_base": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 13374.434828202118,
+        "net_return": 0.33744348282021175,
+        "status": "complete"
+      },
+      "equal_cash_buy_and_hold_stress": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 13241.353007782833,
+        "net_return": 0.32413530077828323,
+        "status": "complete"
+      },
+      "linear_logistic": {
+        "status": "requires separately trained held-out predictions"
+      },
+      "majority_class": {
+        "status": "requires frozen training-only class counts/predictions"
+      }
+    },
+    "classification": {
+      "by_asset": {
+        "BTC": {
+          "accuracy": 0.9698173153296267,
+          "balanced_accuracy_present_classes": 0.3333333333333333,
+          "class_counts": {
+            "BUY": 25,
+            "HOLD": 1221,
+            "SELL": 13
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              25,
+              0
+            ],
+            [
+              0,
+              1221,
+              0
+            ],
+            [
+              0,
+              13,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.012768828008812053,
+          "log_loss": 0.12916342149699686,
+          "macro_f1_all_three_classes": 0.32822580645161287,
+          "multiclass_brier_divided_by_three": 0.018313167705025703,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.5,
+              "mean_confidence": null,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.0,
+              "count": 1,
+              "lower": 0.6,
+              "mean_confidence": 0.6536875469937747,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.6666666666666666,
+              "count": 3,
+              "lower": 0.7,
+              "mean_confidence": 0.7654836559776045,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.7083333333333334,
+              "count": 24,
+              "lower": 0.8,
+              "mean_confidence": 0.8629632312080063,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9764419171405362,
+              "count": 1231,
+              "lower": 0.9,
+              "mean_confidence": 0.9857146209579006,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1259,
+          "status": "complete"
+        },
+        "ETH": {
+          "accuracy": 0.9459888800635425,
+          "balanced_accuracy_present_classes": 0.34848484848484845,
+          "class_counts": {
+            "BUY": 44,
+            "HOLD": 1189,
+            "SELL": 26
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              2,
+              42,
+              0
+            ],
+            [
+              0,
+              1189,
+              0
+            ],
+            [
+              0,
+              26,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.008785331848686575,
+          "log_loss": 0.20986547802163372,
+          "macro_f1_all_three_classes": 0.3530520103807458,
+          "multiclass_brier_divided_by_three": 0.032076202630654166,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.7142857142857143,
+              "count": 7,
+              "lower": 0.5,
+              "mean_confidence": 0.5538479988863314,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.5833333333333334,
+              "count": 12,
+              "lower": 0.6,
+              "mean_confidence": 0.645903684908307,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7586206896551724,
+              "count": 29,
+              "lower": 0.7,
+              "mean_confidence": 0.7582937376603027,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8951612903225806,
+              "count": 124,
+              "lower": 0.8,
+              "mean_confidence": 0.8673433809331839,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9622815087396505,
+              "count": 1087,
+              "lower": 0.9,
+              "mean_confidence": 0.9570120310959848,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1259,
+          "status": "complete"
+        },
+        "SOL": {
+          "accuracy": 0.9245432883240667,
+          "balanced_accuracy_present_classes": 0.3333333333333333,
+          "class_counts": {
+            "BUY": 62,
+            "HOLD": 1164,
+            "SELL": 33
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              62,
+              0
+            ],
+            [
+              0,
+              1164,
+              0
+            ],
+            [
+              0,
+              33,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.020714766470195992,
+          "log_loss": 0.2755790319238117,
+          "macro_f1_all_three_classes": 0.3202641353693768,
+          "multiclass_brier_divided_by_three": 0.04431868316139455,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.75,
+              "count": 4,
+              "lower": 0.5,
+              "mean_confidence": 0.5754982067555245,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.75,
+              "count": 12,
+              "lower": 0.6,
+              "mean_confidence": 0.6595229792493201,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7142857142857143,
+              "count": 49,
+              "lower": 0.7,
+              "mean_confidence": 0.7618260196889687,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8711864406779661,
+              "count": 295,
+              "lower": 0.8,
+              "mean_confidence": 0.8649227556099994,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9566184649610678,
+              "count": 899,
+              "lower": 0.9,
+              "mean_confidence": 0.9342392686271623,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1259,
+          "status": "complete"
+        }
+      },
+      "combined": {
+        "accuracy": 0.9467831612390787,
+        "balanced_accuracy_present_classes": 0.3384223918575064,
+        "class_counts": {
+          "BUY": 131,
+          "HOLD": 3574,
+          "SELL": 72
+        },
+        "class_order": [
+          "BUY",
+          "HOLD",
+          "SELL"
+        ],
+        "confusion_matrix_truth_rows_predicted_columns": [
+          [
+            2,
+            129,
+            0
+          ],
+          [
+            0,
+            3574,
+            0
+          ],
+          [
+            0,
+            72,
+            0
+          ]
+        ],
+        "expected_calibration_error": 0.005500273930768188,
+        "log_loss": 0.20486931048081516,
+        "macro_f1_all_three_classes": 0.33424150933872987,
+        "multiclass_brier_divided_by_three": 0.03156935116569152,
+        "reliability_ten_bins": [
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.4,
+            "mean_confidence": null,
+            "upper": 0.5
+          },
+          {
+            "accuracy": 0.7272727272727273,
+            "count": 11,
+            "lower": 0.5,
+            "mean_confidence": 0.5617208017478562,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 0.64,
+            "count": 25,
+            "lower": 0.6,
+            "mean_confidence": 0.652752300675412,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 0.7283950617283951,
+            "count": 81,
+            "lower": 0.7,
+            "mean_confidence": 0.7606968435165562,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 0.8690744920993227,
+            "count": 443,
+            "lower": 0.8,
+            "mean_confidence": 0.8654941527983205,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 0.9661175007771216,
+            "count": 3217,
+            "lower": 0.9,
+            "mean_confidence": 0.9616312958334885,
+            "upper": 1.0
+          }
+        ],
+        "samples": 3777,
+        "status": "complete"
+      }
+    },
+    "coverage_4h": {
+      "cadence_ms": 14400000,
+      "complete": true,
+      "expected_bars_per_asset": 1261,
+      "missing_bar_counts": {
+        "BTC": 0,
+        "ETH": 0,
+        "SOL": 0
+      },
+      "missing_bars": {}
+    },
+    "excluded_prediction_assets_outside_declared_scope": [
+      "SUI"
+    ],
+    "excluded_prediction_rows_outside_declared_time_scope": {
+      "count": 693,
+      "explicit_scoping_enabled": true,
+      "first": [
+        [
+          "BTC",
+          1769068799999
+        ],
+        [
+          "BTC",
+          1769083199999
+        ],
+        [
+          "BTC",
+          1769097599999
+        ],
+        [
+          "BTC",
+          1769111999999
+        ],
+        [
+          "BTC",
+          1769126399999
+        ],
+        [
+          "BTC",
+          1769140799999
+        ],
+        [
+          "BTC",
+          1769155199999
+        ],
+        [
+          "BTC",
+          1769169599999
+        ],
+        [
+          "BTC",
+          1769183999999
+        ],
+        [
+          "BTC",
+          1769198399999
+        ],
+        [
+          "BTC",
+          1769212799999
+        ],
+        [
+          "BTC",
+          1769227199999
+        ],
+        [
+          "BTC",
+          1769241599999
+        ],
+        [
+          "BTC",
+          1769255999999
+        ],
+        [
+          "BTC",
+          1769270399999
+        ],
+        [
+          "BTC",
+          1769284799999
+        ],
+        [
+          "BTC",
+          1769299199999
+        ],
+        [
+          "BTC",
+          1769313599999
+        ],
+        [
+          "BTC",
+          1769327999999
+        ],
+        [
+          "BTC",
+          1769342399999
+        ]
+      ]
+    },
+    "experiment": {
+      "aligned_history_start_ms": 1683115200000,
+      "architecture_selection": "Validation only; final test confirms once. No automatic replacement; no demonstrated winner unless evaluator rule passes.",
+      "asset_order": [
+        "BTC",
+        "ETH",
+        "SOL"
+      ],
+      "comparison_scope": {
+        "candles_4h_sha256": "01e20e4c3bc1caef9acd367d39db3e9efe522e163b45b5f36ba85ce1a3e2287d",
+        "reason": "Earliest held-out candle with 720 consecutive completed Kraken/USD 4H bars for bundled Parente on BTC/ETH/SOL",
+        "rule_frozen_without_prediction_or_performance_inspection": true,
+        "source_experiment_sha256": "00d1c373f8308e524e73b66f799fce495642dd04a95a44adbe390d51105fd1d8",
+        "unsupported_parente_asset": "SUI",
+        "warmup_bars": 720
+      },
+      "data_audit": {
+        "BTC": {
+          "dataset_sha256": "43e2b2a3a4c2cb20acad177fc7ba68e3a5963424710d65cb81564cc998909957",
+          "first_open_ms": 1381089600000,
+          "gap_count": 579,
+          "largest_contiguous_bars": 13697,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            4291,
+            13697,
+            3398,
+            1980
+          ],
+          "source_csv": "BTCUSD_240.csv",
+          "total_bars": 27343
+        },
+        "ETH": {
+          "dataset_sha256": "0fae876b05b248b72e33d490fb0c4555891ca213960acebdf3a974b4a3340b54",
+          "first_open_ms": 1438948800000,
+          "gap_count": 209,
+          "largest_contiguous_bars": 13190,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            4247,
+            13190,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "ETHUSD_240.csv",
+          "total_bars": 23968
+        },
+        "SOL": {
+          "dataset_sha256": "0dec5f094216745152bd6ccefd48bbd3d9ca99c063683a9133104870a601cd9f",
+          "first_open_ms": 1623931200000,
+          "gap_count": 3,
+          "largest_contiguous_bars": 5683,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            5683,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "SOLUSD_240.csv",
+          "total_bars": 11567
+        },
+        "SUI": {
+          "dataset_sha256": "e1cbc51a2341c7f5e428402e7d14cd78fd830599fc5ea7c47c2119f60f0ee122",
+          "first_open_ms": 1683115200000,
+          "gap_count": 13,
+          "largest_contiguous_bars": 3398,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            394,
+            549,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "SUIUSD_240.csv",
+          "total_bars": 7447
+        }
+      },
+      "dataset_sha256_by_asset": {
+        "BTC": "43e2b2a3a4c2cb20acad177fc7ba68e3a5963424710d65cb81564cc998909957",
+        "ETH": "0fae876b05b248b72e33d490fb0c4555891ca213960acebdf3a974b4a3340b54",
+        "SOL": "0dec5f094216745152bd6ccefd48bbd3d9ca99c063683a9133104870a601cd9f",
+        "SUI": "e1cbc51a2341c7f5e428402e7d14cd78fd830599fc5ea7c47c2119f60f0ee122"
+      },
+      "development_cutoff_ms": 1769054399999,
+      "experiment_id": "kraken-usd-4h-ohlcv16-parente52-chronological-v1",
+      "feature_schema": "kraken-ohlcv-16-v1",
+      "fee_rate": 0.004,
+      "forward_horizon_bars": 2,
+      "frozen_before_training": true,
+      "initial_equity": 10000.0,
+      "label_alpha": 0.038,
+      "label_backward": 5,
+      "label_beta": 0.24,
+      "label_version": "parente-source-5-2-v1",
+      "max_allocation": 0.75,
+      "max_spread_bps": 30.0,
+      "max_total_risk": 0.1,
+      "minimum_notional": 10.0,
+      "nn_stop_loss": 0.1,
+      "paper_floor": 0.0,
+      "primary_limitations_enabled": false,
+      "quote_currency": "USD",
+      "risk_per_trade": 0.05,
+      "schema": 1,
+      "signal_window_seconds": 60,
+      "slippage_rate": 0.0005,
+      "source": "Kraken official historical OHLCVT 2026Q2 archive plus verified committed REST tail",
+      "source_provenance_sha256": "266ad1040cf8e1a9e36ff80f35486b61e5a611ef3b4e5267d475ba38ad9ef332",
+      "split_policy": "Train sample target ends before validation_start; validation sample opens at/after validation_start and target ends before test_start; test opens at/after test_start, last two unknown targets omitted. Contiguous segments only.",
+      "spread_bps": 10.0,
+      "stress_fee_multiplier": 2.0,
+      "stress_slippage_multiplier": 2.0,
+      "stress_spread_multiplier": 2.0,
+      "test_end_ms": 1790539200000,
+      "test_start_ms": 1772380800000,
+      "timeframe_ms": 14400000,
+      "training_recipe": {
+        "batch_size": 64,
+        "calibration": null,
+        "class_weights": null,
+        "early_stopping_patience": 10,
+        "gradient_clip_norm": 1.0,
+        "learning_rate": 0.001,
+        "max_epochs": 100,
+        "optimizer": "Adam",
+        "seed_selection": "lowest final-validation cross entropy only",
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "smoke_batches": null
+      },
+      "validation_start_ms": 1758312000000
+    },
+    "input_sha256": {
+      "candles_4h": "01e20e4c3bc1caef9acd367d39db3e9efe522e163b45b5f36ba85ce1a3e2287d",
+      "experiment": "aa862b38110429b5ab692f381aa240c5585cdc33b3f1157c60f35b1cfda23eff",
+      "predictions": "82b5a4f580db386f1c890885fae9a02969046db808f42b5984a3f91a78928521"
+    },
+    "label_verification": {
+      "checked": 3777,
+      "method": "independent adjusted-EMA(5), 2-bar forward, alpha 0.038, source upper threshold 0.288",
+      "status": "complete"
+    },
+    "mark_cadence_ms": 14400000,
+    "model_id": "probability_ensemble_v1@3801b1dabe20",
+    "per_asset_replay": {
+      "BTC": {
+        "limited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1259,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1259,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        }
+      },
+      "ETH": {
+        "limited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 1,
+            "hold": 1257,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 42.35772618580085,
+          "final_net_liquidation_equity": 11291.9450906789,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.03365230942051822,
+          "net_return": 0.1291945090678901,
+          "slippage_cost_usd": 5.295050672691991,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 5.295386896004972,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.18636003172085647,
+          "turnover_notional_usd": 10589.431546450212
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1257,
+            "insufficient_budget": 1,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 91.16884602527173,
+          "final_net_liquidation_equity": 12780.723935193062,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.06556044488561308,
+          "net_return": 0.2780723935193061,
+          "slippage_cost_usd": 11.396826575560917,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 11.397550247349077,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.18636003172085647,
+          "turnover_notional_usd": 22792.211506317937
+        }
+      },
+      "SOL": {
+        "limited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1259,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1259,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1262,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        }
+      }
+    },
+    "prediction_coverage": {
+      "available": 3777,
+      "expected": 3777,
+      "first_missing": [],
+      "missing": 0
+    },
+    "quote_proxy": "Candle open/close midpoint with declared symmetric spread; not historical Kraken bid/ask",
+    "reason": null,
+    "replay": {
+      "limited_base": {
+        "attempts": {
+          "buy": 2,
+          "duplicate_or_active": 1,
+          "hold": 3775,
+          "insufficient_budget": 0,
+          "missed_window": 0,
+          "sell": 0,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "base",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 42.35772618580085,
+        "final_net_liquidation_equity": 11291.9450906789,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1262,
+        "max_sampled_drawdown": 0.03365230942051822,
+        "net_return": 0.1291945090678901,
+        "slippage_cost_usd": 5.295050672691991,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 5.295386896004972,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.18636003172085647,
+        "turnover_notional_usd": 10589.431546450212
+      },
+      "limited_stress": {
+        "attempts": {
+          "buy": 2,
+          "duplicate_or_active": 1,
+          "hold": 3775,
+          "insufficient_budget": 0,
+          "missed_window": 0,
+          "sell": 0,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "stress",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 78.75644079987526,
+        "final_net_liquidation_equity": 11152.000042905136,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1262,
+        "max_sampled_drawdown": 0.031470195687037905,
+        "net_return": 0.11520000429051369,
+        "slippage_cost_usd": 9.845795702263814,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 9.847046151589147,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.18636003172085647,
+        "turnover_notional_usd": 9844.555099984407
+      },
+      "unlimited_base": {
+        "attempts": {
+          "buy": 2,
+          "duplicate_or_active": 0,
+          "hold": 3775,
+          "insufficient_budget": 1,
+          "missed_window": 0,
+          "sell": 0,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "base",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 91.16884602527173,
+        "final_net_liquidation_equity": 12780.723935193062,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1262,
+        "max_sampled_drawdown": 0.06556044488561308,
+        "net_return": 0.2780723935193061,
+        "slippage_cost_usd": 11.396826575560917,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 11.397550247349077,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.18636003172085647,
+        "turnover_notional_usd": 22792.211506317937
+      },
+      "unlimited_stress": {
+        "attempts": {
+          "buy": 2,
+          "duplicate_or_active": 0,
+          "hold": 3775,
+          "insufficient_budget": 1,
+          "missed_window": 0,
+          "sell": 0,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "stress",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 181.40983592245544,
+        "final_net_liquidation_equity": 12653.549813114632,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1262,
+        "max_sampled_drawdown": 0.06556044488561297,
+        "net_return": 0.2653549813114633,
+        "slippage_cost_usd": 22.679087129043097,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 22.68196744974619,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.18636003172085647,
+        "turnover_notional_usd": 22676.22949030693
+      }
+    },
+    "schema": "nn-candidate-evaluation-v1",
+    "status": "complete",
+    "stop_timing_limitation": "OHLC range confirms a stop only after the bar; intrabar crossing/fill time is unknown. Replay fills at the bar open, so its later low is eligible at the next observation; a real post-open quote may have entered after that low."
+  },
+  "display_name": "Fixed equal-weight probability ensemble",
+  "evaluation": {
+    "artifact_id": "3801b1dabe200b4c4b24182f9b566ecb0aedb45ad505bf93b38b47e8ebd26795",
+    "baselines": {
+      "cash_no_trade": {
+        "final_net_liquidation_equity": 10000.0,
+        "net_return": 0.0
+      },
+      "equal_cash_buy_and_hold_base": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 8964.801201653801,
+        "net_return": -0.10351987983461985,
+        "status": "complete"
+      },
+      "equal_cash_buy_and_hold_stress": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 8875.59727797866,
+        "net_return": -0.11244027220213393,
+        "status": "complete"
+      },
+      "linear_logistic": {
+        "status": "requires separately trained held-out predictions"
+      },
+      "majority_class": {
+        "status": "requires frozen training-only class counts/predictions"
+      }
+    },
+    "classification": {
+      "by_asset": {
+        "BTC": {
+          "accuracy": 0.9610738255033557,
+          "balanced_accuracy_present_classes": 0.3333333333333333,
+          "class_counts": {
+            "BUY": 31,
+            "HOLD": 1432,
+            "SELL": 27
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              31,
+              0
+            ],
+            [
+              0,
+              1432,
+              0
+            ],
+            [
+              0,
+              27,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.017800045096724584,
+          "log_loss": 0.16015293058608837,
+          "macro_f1_all_three_classes": 0.3267168605977641,
+          "multiclass_brier_divided_by_three": 0.023455766804820935,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.5,
+              "mean_confidence": null,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.0,
+              "count": 1,
+              "lower": 0.6,
+              "mean_confidence": 0.6536875469937747,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.8571428571428571,
+              "count": 7,
+              "lower": 0.7,
+              "mean_confidence": 0.7634026305683469,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.7090909090909091,
+              "count": 55,
+              "lower": 0.8,
+              "mean_confidence": 0.8660340713398424,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9719691660826909,
+              "count": 1427,
+              "lower": 0.9,
+              "mean_confidence": 0.9835881738874652,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "ETH": {
+          "accuracy": 0.9248322147651007,
+          "balanced_accuracy_present_classes": 0.35638350720317935,
+          "class_counts": {
+            "BUY": 55,
+            "HOLD": 1374,
+            "SELL": 61
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              2,
+              53,
+              0
+            ],
+            [
+              0,
+              1374,
+              0
+            ],
+            [
+              0,
+              59,
+              2
+            ]
+          ],
+          "expected_calibration_error": 0.008256333497792121,
+          "log_loss": 0.26589652287791266,
+          "macro_f1_all_three_classes": 0.3648355543092385,
+          "multiclass_brier_divided_by_three": 0.043610341981640405,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 1.0,
+              "count": 1,
+              "lower": 0.4,
+              "mean_confidence": 0.4846171610053933,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.6428571428571429,
+              "count": 14,
+              "lower": 0.5,
+              "mean_confidence": 0.5677999246215377,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.6842105263157895,
+              "count": 19,
+              "lower": 0.6,
+              "mean_confidence": 0.6428654959544938,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7446808510638298,
+              "count": 47,
+              "lower": 0.7,
+              "mean_confidence": 0.7577373826941366,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8333333333333334,
+              "count": 186,
+              "lower": 0.8,
+              "mean_confidence": 0.8643610685993326,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9525756336876533,
+              "count": 1223,
+              "lower": 0.9,
+              "mean_confidence": 0.9554909089897402,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "SOL": {
+          "accuracy": 0.9006711409395973,
+          "balanced_accuracy_present_classes": 0.3333333333333333,
+          "class_counts": {
+            "BUY": 81,
+            "HOLD": 1342,
+            "SELL": 67
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              81,
+              0
+            ],
+            [
+              0,
+              1342,
+              0
+            ],
+            [
+              0,
+              67,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.01857376751390391,
+          "log_loss": 0.326655375485375,
+          "macro_f1_all_three_classes": 0.3159133709981167,
+          "multiclass_brier_divided_by_three": 0.055619157665049664,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 0.0,
+              "count": 1,
+              "lower": 0.4,
+              "mean_confidence": 0.48195982045694313,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.6363636363636364,
+              "count": 11,
+              "lower": 0.5,
+              "mean_confidence": 0.5721084298701653,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.6666666666666666,
+              "count": 24,
+              "lower": 0.6,
+              "mean_confidence": 0.6625700870522732,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.6888888888888889,
+              "count": 90,
+              "lower": 0.7,
+              "mean_confidence": 0.7593490768441246,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8512820512820513,
+              "count": 390,
+              "lower": 0.8,
+              "mean_confidence": 0.8630794219294324,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9496919917864476,
+              "count": 974,
+              "lower": 0.9,
+              "mean_confidence": 0.9338342534654657,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "SUI": {
+          "accuracy": 0.8610738255033556,
+          "balanced_accuracy_present_classes": 0.3466918188276405,
+          "class_counts": {
+            "BUY": 108,
+            "HOLD": 1286,
+            "SELL": 96
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              5,
+              103,
+              0
+            ],
+            [
+              7,
+              1278,
+              1
+            ],
+            [
+              0,
+              96,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.042122493863036216,
+          "log_loss": 0.4387263400979972,
+          "macro_f1_all_three_classes": 0.336138255519363,
+          "multiclass_brier_divided_by_three": 0.07626361992353022,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 0.2,
+              "count": 5,
+              "lower": 0.4,
+              "mean_confidence": 0.489546122725059,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.5517241379310345,
+              "count": 29,
+              "lower": 0.5,
+              "mean_confidence": 0.5644372831937816,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.72,
+              "count": 100,
+              "lower": 0.6,
+              "mean_confidence": 0.6616351627461796,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7482993197278912,
+              "count": 294,
+              "lower": 0.7,
+              "mean_confidence": 0.7604616546443761,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.9088757396449704,
+              "count": 845,
+              "lower": 0.8,
+              "mean_confidence": 0.8574764303976475,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9493087557603687,
+              "count": 217,
+              "lower": 0.9,
+              "mean_confidence": 0.9119747579499419,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        }
+      },
+      "combined": {
+        "accuracy": 0.9119127516778524,
+        "balanced_accuracy_present_classes": 0.34398348698201914,
+        "class_counts": {
+          "BUY": 275,
+          "HOLD": 5434,
+          "SELL": 251
+        },
+        "class_order": [
+          "BUY",
+          "HOLD",
+          "SELL"
+        ],
+        "confusion_matrix_truth_rows_predicted_columns": [
+          [
+            7,
+            268,
+            0
+          ],
+          [
+            7,
+            5426,
+            1
+          ],
+          [
+            0,
+            249,
+            2
+          ]
+        ],
+        "expected_calibration_error": 0.007814453196844609,
+        "log_loss": 0.29785779226184367,
+        "macro_f1_all_three_classes": 0.33934840181733894,
+        "multiclass_brier_divided_by_three": 0.049737221593760414,
+        "reliability_ten_bins": [
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.3,
+            "mean_confidence": null,
+            "upper": 0.4
+          },
+          {
+            "accuracy": 0.2857142857142857,
+            "count": 7,
+            "lower": 0.4,
+            "mean_confidence": 0.4877582278696616,
+            "upper": 0.5
+          },
+          {
+            "accuracy": 0.5925925925925926,
+            "count": 54,
+            "lower": 0.5,
+            "mean_confidence": 0.5668717201091297,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 0.7013888888888888,
+            "count": 144,
+            "lower": 0.6,
+            "mean_confidence": 0.6592592384305678,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 0.7374429223744292,
+            "count": 438,
+            "lower": 0.7,
+            "mean_confidence": 0.759987714114203,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 0.8766937669376694,
+            "count": 1476,
+            "lower": 0.8,
+            "mean_confidence": 0.8601433542829646,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 0.9588648789377766,
+            "count": 3841,
+            "lower": 0.9,
+            "mean_confidence": 0.9579793780740339,
+            "upper": 1.0
+          }
+        ],
+        "samples": 5960,
+        "status": "complete"
+      }
+    },
+    "coverage_4h": {
+      "cadence_ms": 14400000,
+      "complete": true,
+      "expected_bars_per_asset": 1492,
+      "missing_bar_counts": {
+        "BTC": 0,
+        "ETH": 0,
+        "SOL": 0,
+        "SUI": 0
+      },
+      "missing_bars": {}
+    },
+    "excluded_prediction_assets_outside_declared_scope": [],
+    "excluded_prediction_rows_outside_declared_time_scope": {
+      "count": 0,
+      "explicit_scoping_enabled": false,
+      "first": []
+    },
+    "experiment": {
+      "aligned_history_start_ms": 1683115200000,
+      "architecture_selection": "Validation only; final test confirms once. No automatic replacement; no demonstrated winner unless evaluator rule passes.",
+      "asset_order": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "SUI"
+      ],
+      "data_audit": {
+        "BTC": {
+          "dataset_sha256": "43e2b2a3a4c2cb20acad177fc7ba68e3a5963424710d65cb81564cc998909957",
+          "first_open_ms": 1381089600000,
+          "gap_count": 579,
+          "largest_contiguous_bars": 13697,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            4291,
+            13697,
+            3398,
+            1980
+          ],
+          "source_csv": "BTCUSD_240.csv",
+          "total_bars": 27343
+        },
+        "ETH": {
+          "dataset_sha256": "0fae876b05b248b72e33d490fb0c4555891ca213960acebdf3a974b4a3340b54",
+          "first_open_ms": 1438948800000,
+          "gap_count": 209,
+          "largest_contiguous_bars": 13190,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            4247,
+            13190,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "ETHUSD_240.csv",
+          "total_bars": 23968
+        },
+        "SOL": {
+          "dataset_sha256": "0dec5f094216745152bd6ccefd48bbd3d9ca99c063683a9133104870a601cd9f",
+          "first_open_ms": 1623931200000,
+          "gap_count": 3,
+          "largest_contiguous_bars": 5683,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            5683,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "SOLUSD_240.csv",
+          "total_bars": 11567
+        },
+        "SUI": {
+          "dataset_sha256": "e1cbc51a2341c7f5e428402e7d14cd78fd830599fc5ea7c47c2119f60f0ee122",
+          "first_open_ms": 1683115200000,
+          "gap_count": 13,
+          "largest_contiguous_bars": 3398,
+          "last_open_ms": 1790524800000,
+          "missing_bar_policy": "No interpolation; windows and targets never cross a gap",
+          "segment_lengths_at_least_319": [
+            394,
+            549,
+            506,
+            3398,
+            1980
+          ],
+          "source_csv": "SUIUSD_240.csv",
+          "total_bars": 7447
+        }
+      },
+      "dataset_sha256_by_asset": {
+        "BTC": "43e2b2a3a4c2cb20acad177fc7ba68e3a5963424710d65cb81564cc998909957",
+        "ETH": "0fae876b05b248b72e33d490fb0c4555891ca213960acebdf3a974b4a3340b54",
+        "SOL": "0dec5f094216745152bd6ccefd48bbd3d9ca99c063683a9133104870a601cd9f",
+        "SUI": "e1cbc51a2341c7f5e428402e7d14cd78fd830599fc5ea7c47c2119f60f0ee122"
+      },
+      "development_cutoff_ms": 1769054399999,
+      "experiment_id": "kraken-usd-4h-ohlcv16-parente52-chronological-v1",
+      "feature_schema": "kraken-ohlcv-16-v1",
+      "fee_rate": 0.004,
+      "forward_horizon_bars": 2,
+      "frozen_before_training": true,
+      "initial_equity": 10000.0,
+      "label_alpha": 0.038,
+      "label_backward": 5,
+      "label_beta": 0.24,
+      "label_version": "parente-source-5-2-v1",
+      "max_allocation": 0.75,
+      "max_spread_bps": 30.0,
+      "max_total_risk": 0.1,
+      "minimum_notional": 10.0,
+      "nn_stop_loss": 0.1,
+      "paper_floor": 0.0,
+      "primary_limitations_enabled": false,
+      "quote_currency": "USD",
+      "risk_per_trade": 0.05,
+      "schema": 1,
+      "signal_window_seconds": 60,
+      "slippage_rate": 0.0005,
+      "source": "Kraken official historical OHLCVT 2026Q2 archive plus verified committed REST tail",
+      "source_provenance_sha256": "266ad1040cf8e1a9e36ff80f35486b61e5a611ef3b4e5267d475ba38ad9ef332",
+      "split_policy": "Train sample target ends before validation_start; validation sample opens at/after validation_start and target ends before test_start; test opens at/after test_start, last two unknown targets omitted. Contiguous segments only.",
+      "spread_bps": 10.0,
+      "stress_fee_multiplier": 2.0,
+      "stress_slippage_multiplier": 2.0,
+      "stress_spread_multiplier": 2.0,
+      "test_end_ms": 1790539200000,
+      "test_start_ms": 1769054400000,
+      "timeframe_ms": 14400000,
+      "training_recipe": {
+        "batch_size": 64,
+        "calibration": null,
+        "class_weights": null,
+        "early_stopping_patience": 10,
+        "gradient_clip_norm": 1.0,
+        "learning_rate": 0.001,
+        "max_epochs": 100,
+        "optimizer": "Adam",
+        "seed_selection": "lowest final-validation cross entropy only",
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "smoke_batches": null
+      },
+      "validation_start_ms": 1758312000000
+    },
+    "input_sha256": {
+      "candles_4h": "01e20e4c3bc1caef9acd367d39db3e9efe522e163b45b5f36ba85ce1a3e2287d",
+      "experiment": "00d1c373f8308e524e73b66f799fce495642dd04a95a44adbe390d51105fd1d8",
+      "predictions": "82b5a4f580db386f1c890885fae9a02969046db808f42b5984a3f91a78928521"
+    },
+    "label_verification": {
+      "checked": 5960,
+      "method": "independent adjusted-EMA(5), 2-bar forward, alpha 0.038, source upper threshold 0.288",
+      "status": "complete"
+    },
+    "mark_cadence_ms": 14400000,
+    "model_id": "probability_ensemble_v1@3801b1dabe20",
+    "per_asset_replay": {
+      "BTC": {
+        "limited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1490,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1490,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        }
+      },
+      "ETH": {
+        "limited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 1,
+            "hold": 1486,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 2,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 42.35772618580085,
+          "final_net_liquidation_equity": 11291.9450906789,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.03365230942051822,
+          "net_return": 0.1291945090678901,
+          "slippage_cost_usd": 5.295050672691991,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 5.295386896004972,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.15750670241286863,
+          "turnover_notional_usd": 10589.431546450212
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1486,
+            "insufficient_budget": 1,
+            "missed_window": 0,
+            "sell": 2,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 91.16884602527173,
+          "final_net_liquidation_equity": 12780.723935193062,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.06556044488561308,
+          "net_return": 0.2780723935193061,
+          "slippage_cost_usd": 11.396826575560917,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 11.397550247349077,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.15750670241286863,
+          "turnover_notional_usd": 22792.211506317937
+        }
+      },
+      "SOL": {
+        "limited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1490,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 0,
+            "duplicate_or_active": 0,
+            "hold": 1490,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 0,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 0.0,
+          "final_net_liquidation_equity": 10000.0,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.0,
+          "net_return": 0.0,
+          "slippage_cost_usd": 0.0,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 0.0,
+          "terminal_liquidations": 0,
+          "time_in_market_fraction": 0.0,
+          "turnover_notional_usd": 0
+        }
+      },
+      "SUI": {
+        "limited_base": {
+          "attempts": {
+            "buy": 12,
+            "duplicate_or_active": 6,
+            "hold": 1477,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 1,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 5,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 189.33986558269245,
+          "final_net_liquidation_equity": 8110.453454555582,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.29837794753163627,
+          "net_return": -0.18895465454444182,
+          "slippage_cost_usd": 23.667064062932603,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 5,
+          "synthetic_spread_cost_usd": 23.666650844688533,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.3183646112600536,
+          "turnover_notional_usd": 47334.96639567312
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 12,
+            "duplicate_or_active": 0,
+            "hold": 1477,
+            "insufficient_budget": 11,
+            "missed_window": 0,
+            "sell": 1,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+          "fees_paid_usd": 91.40661845352699,
+          "final_net_liquidation_equity": 12839.929269828617,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.5327495114713758,
+          "net_return": 0.2839929269828618,
+          "slippage_cost_usd": 11.426562997303694,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 11.42730154474156,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.9376675603217158,
+          "turnover_notional_usd": 22851.654613381746
+        }
+      }
+    },
+    "prediction_coverage": {
+      "available": 5960,
+      "expected": 5960,
+      "first_missing": [],
+      "missing": 0
+    },
+    "quote_proxy": "Candle open/close midpoint with declared symmetric spread; not historical Kraken bid/ask",
+    "reason": null,
+    "replay": {
+      "limited_base": {
+        "attempts": {
+          "buy": 14,
+          "duplicate_or_active": 7,
+          "hold": 5943,
+          "insufficient_budget": 0,
+          "missed_window": 0,
+          "sell": 3,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 5,
+        "cost_scenario": "base",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 222.03586303879547,
+        "final_net_liquidation_equity": 9143.33869151316,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.24983303926300748,
+        "net_return": -0.08566613084868402,
+        "slippage_cost_usd": 27.754331162070866,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 5,
+        "synthetic_spread_cost_usd": 27.754186382835535,
+        "terminal_liquidations": 2,
+        "time_in_market_fraction": 0.46581769436997317,
+        "turnover_notional_usd": 55508.96575969887
+      },
+      "limited_stress": {
+        "attempts": {
+          "buy": 14,
+          "duplicate_or_active": 7,
+          "hold": 5943,
+          "insufficient_budget": 0,
+          "missed_window": 0,
+          "sell": 3,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 5,
+        "cost_scenario": "stress",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 412.76175423369887,
+        "final_net_liquidation_equity": 8971.822447437095,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.24071103449596543,
+        "net_return": -0.10281775525629056,
+        "slippage_cost_usd": 51.59465545806949,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 5,
+        "synthetic_spread_cost_usd": 51.59414323106724,
+        "terminal_liquidations": 2,
+        "time_in_market_fraction": 0.4644772117962466,
+        "turnover_notional_usd": 51595.219279212346
+      },
+      "unlimited_base": {
+        "attempts": {
+          "buy": 14,
+          "duplicate_or_active": 0,
+          "hold": 5943,
+          "insufficient_budget": 13,
+          "missed_window": 0,
+          "sell": 3,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "base",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 91.40661845352699,
+        "final_net_liquidation_equity": 12839.929269828617,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.5327495114713758,
+        "net_return": 0.2839929269828618,
+        "slippage_cost_usd": 11.426562997303694,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 11.42730154474156,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.9376675603217158,
+        "turnover_notional_usd": 22851.654613381746
+      },
+      "unlimited_stress": {
+        "attempts": {
+          "buy": 14,
+          "duplicate_or_active": 0,
+          "hold": 5943,
+          "insufficient_budget": 13,
+          "missed_window": 0,
+          "sell": 3,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 0,
+        "cost_scenario": "stress",
+        "execution": "Predicted completed 4H signal fills on next observation open; synthetic bid/ask, recorded fee/slippage, entry-bar low eligible at next observation, stop confirmation after a full bar, terminal close liquidation",
+        "fees_paid_usd": 181.8825473267873,
+        "final_net_liquidation_equity": 12712.166027251782,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.5327495114713758,
+        "net_return": 0.2712166027251781,
+        "slippage_cost_usd": 22.738235202658192,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 22.74117473064203,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.9376675603217158,
+        "turnover_notional_usd": 22735.31841584841
+      }
+    },
+    "schema": "nn-candidate-evaluation-v1",
+    "status": "complete",
+    "stop_timing_limitation": "OHLC range confirms a stop only after the bar; intrabar crossing/fill time is unknown. Replay fills at the bar open, so its later low is eligible at the next observation; a real post-open quote may have entered after that low."
+  },
+  "full_comparison_evaluation_sha256": "0a9cd6166a4504224a529457f328619b60d91c82f9754ef4ab3cd39a1c72a683",
+  "full_evaluation_sha256": "9827c01ad20b552ae2be8b9df58af9cd0de8e3bc6fb876c5b96ef4df9bc4c48a",
+  "identity_payload": {
+    "architecture_id": "probability_ensemble_v1",
+    "classes": [
+      "BUY",
+      "HOLD",
+      "SELL"
+    ],
+    "components": [
+      {
+        "artifact_id": "4033451e932946bc33c26b517a07bf5a71a2d81ac2227c6b5f4df6476a61ac6d",
+        "manifest_sha256": "7b73c57084c33487c3dffa48b8120c5a2de88236b78fe4bc59d450d67e34a4d8",
+        "model_id": "lstm_classifier_v1@4033451e9329"
+      },
+      {
+        "artifact_id": "1f83df264a1e1d24516aeae8554ea3dcf6d93ab174579ab995a3c883e45b6f28",
+        "manifest_sha256": "7cb2ae82f42f297ae7c03617758ac418c52856e6c3b1a255ddb4527d21aa34e1",
+        "model_id": "gru_classifier_v1@1f83df264a1e"
+      },
+      {
+        "artifact_id": "79f9860590ebf3a6269a6287189201b22c31e6874a9c9953a1c9a85419fb94b5",
+        "manifest_sha256": "d2bd3f3702279bf0e9e8ca28e415ccd6a672f501081170cf3ac56e15c790c46a",
+        "model_id": "cnn_lstm_classifier_v1@79f9860590eb"
+      },
+      {
+        "artifact_id": "2e29d734b5b6ed56a76d61685de4d60fa55aac18e712b5064ca20a8342b72443",
+        "manifest_sha256": "b0e65f1e55401b5e4f10df9c0c28b022d3b7118d258e61fe8d304d2150b25521",
+        "model_id": "grouped_attention_lstm_v1@2e29d734b5b6"
+      }
+    ],
+    "coverage": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "SUI"
+    ],
+    "feature_schema": "kraken-ohlcv-16-v1",
+    "history_bars": 319,
+    "label_version": "parente-source-5-2-v1",
+    "latest_model_selection_through_ms": 1790539199999,
+    "schema": "fixed-probability-ensemble-v1",
+    "target_horizon_bars": 2,
+    "timeframe_ms": 14400000,
+    "weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "recommendation": "no demonstrated winner",
+  "schema": 1,
+  "technical_status": "paired_member_predictions_and_report_validated"
+}

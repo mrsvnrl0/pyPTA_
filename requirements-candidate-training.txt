@@ -1,0 +1,8 @@
+# Optional, isolated offline candidate training environment; validated on
+# Windows 11 x64 / CPython 3.12. Do not install into the live dashboard venv.
+torch==2.14.0
+onnx==1.23.0
+onnxruntime==1.30.0
+onnxscript==0.7.2
+numpy==2.5.3
+requests==2.34.2

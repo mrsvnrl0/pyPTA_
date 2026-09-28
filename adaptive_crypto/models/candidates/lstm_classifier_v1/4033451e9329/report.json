@@ -1,0 +1,3857 @@
+{
+  "schema": 1,
+  "architecture_id": "lstm_classifier_v1",
+  "display_name": "LSTM",
+  "technical_status": "trained_export_parity_passed",
+  "recommendation": "no demonstrated winner",
+  "development_cutoff_ms": 1769054399999,
+  "promotion_evidence_through_ms": 1790539199999,
+  "experiment_sha256": "00d1c373f8308e524e73b66f799fce495642dd04a95a44adbe390d51105fd1d8",
+  "data_audit": {
+    "BTC": {
+      "source_csv": "BTCUSD_240.csv",
+      "dataset_sha256": "43e2b2a3a4c2cb20acad177fc7ba68e3a5963424710d65cb81564cc998909957",
+      "total_bars": 27343,
+      "first_open_ms": 1381089600000,
+      "last_open_ms": 1790524800000,
+      "gap_count": 579,
+      "largest_contiguous_bars": 13697,
+      "segment_lengths_at_least_319": [
+        4291,
+        13697,
+        3398,
+        1980
+      ],
+      "missing_bar_policy": "No interpolation; windows and targets never cross a gap"
+    },
+    "ETH": {
+      "source_csv": "ETHUSD_240.csv",
+      "dataset_sha256": "0fae876b05b248b72e33d490fb0c4555891ca213960acebdf3a974b4a3340b54",
+      "total_bars": 23968,
+      "first_open_ms": 1438948800000,
+      "last_open_ms": 1790524800000,
+      "gap_count": 209,
+      "largest_contiguous_bars": 13190,
+      "segment_lengths_at_least_319": [
+        4247,
+        13190,
+        506,
+        3398,
+        1980
+      ],
+      "missing_bar_policy": "No interpolation; windows and targets never cross a gap"
+    },
+    "SOL": {
+      "source_csv": "SOLUSD_240.csv",
+      "dataset_sha256": "0dec5f094216745152bd6ccefd48bbd3d9ca99c063683a9133104870a601cd9f",
+      "total_bars": 11567,
+      "first_open_ms": 1623931200000,
+      "last_open_ms": 1790524800000,
+      "gap_count": 3,
+      "largest_contiguous_bars": 5683,
+      "segment_lengths_at_least_319": [
+        5683,
+        506,
+        3398,
+        1980
+      ],
+      "missing_bar_policy": "No interpolation; windows and targets never cross a gap"
+    },
+    "SUI": {
+      "source_csv": "SUIUSD_240.csv",
+      "dataset_sha256": "e1cbc51a2341c7f5e428402e7d14cd78fd830599fc5ea7c47c2119f60f0ee122",
+      "total_bars": 7447,
+      "first_open_ms": 1683115200000,
+      "last_open_ms": 1790524800000,
+      "gap_count": 13,
+      "largest_contiguous_bars": 3398,
+      "segment_lengths_at_least_319": [
+        394,
+        549,
+        506,
+        3398,
+        1980
+      ],
+      "missing_bar_policy": "No interpolation; windows and targets never cross a gap"
+    }
+  },
+  "per_asset": {
+    "BTC": {
+      "sample_counts": {
+        "train": 4899,
+        "validation": 423,
+        "test": 1490
+      },
+      "class_counts": {
+        "train": {
+          "BUY": 100,
+          "HOLD": 4719,
+          "SELL": 80
+        },
+        "validation": {
+          "BUY": 0,
+          "HOLD": 418,
+          "SELL": 5
+        },
+        "test": {
+          "BUY": 31,
+          "HOLD": 1432,
+          "SELL": 27
+        }
+      },
+      "selected_seed": 11,
+      "selected_validation_log_loss": 0.048762317813400714,
+      "seed_runs": [
+        {
+          "seed": 11,
+          "epochs": 43,
+          "best_validation_loss": 0.048762317813400714,
+          "seconds": 41.91100469999947,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.4273980670765816,
+              "validation_loss": 0.07657558311309133
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.1609277097242219,
+              "validation_loss": 0.060735485782580714
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.15415923290148184,
+              "validation_loss": 0.05967804456927946
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.14944752136414702,
+              "validation_loss": 0.05979644201163735
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.1501860176636414,
+              "validation_loss": 0.0602057133136051
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.14585309381318556,
+              "validation_loss": 0.06230376421340874
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.14393002834993524,
+              "validation_loss": 0.0588625165234719
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.14470377970825543,
+              "validation_loss": 0.06126409223569291
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.1436639028032879,
+              "validation_loss": 0.061061145338628976
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.1408607473040556,
+              "validation_loss": 0.059024562393980365
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.13997083645942923,
+              "validation_loss": 0.05960283920701061
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.13854551805159102,
+              "validation_loss": 0.0564355854211109
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.13951019647640067,
+              "validation_loss": 0.055167515229965956
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.13948360980524646,
+              "validation_loss": 0.06182740375931774
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.1361432710735055,
+              "validation_loss": 0.05672948102333716
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.1337311076024523,
+              "validation_loss": 0.05411813421440976
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.1326976568958202,
+              "validation_loss": 0.06884544236319405
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.1311127876306509,
+              "validation_loss": 0.05730141047388315
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.12999183950679644,
+              "validation_loss": 0.0551685373564916
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.1282259432913421,
+              "validation_loss": 0.056185737651373656
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.1285136549116729,
+              "validation_loss": 0.051666438047374995
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.1279003271325068,
+              "validation_loss": 0.05939172514315162
+            },
+            {
+              "epoch": 23,
+              "train_loss": 0.12471547594608424,
+              "validation_loss": 0.051775944618774314
+            },
+            {
+              "epoch": 24,
+              "train_loss": 0.12146310198616672,
+              "validation_loss": 0.0532383075915277
+            },
+            {
+              "epoch": 25,
+              "train_loss": 0.12011131484593664,
+              "validation_loss": 0.058130204544535706
+            },
+            {
+              "epoch": 26,
+              "train_loss": 0.1192327815700661,
+              "validation_loss": 0.054587797062205415
+            },
+            {
+              "epoch": 27,
+              "train_loss": 0.11588993551233759,
+              "validation_loss": 0.0524541675778372
+            },
+            {
+              "epoch": 28,
+              "train_loss": 0.11197288402102211,
+              "validation_loss": 0.04923738931704845
+            },
+            {
+              "epoch": 29,
+              "train_loss": 0.1134272925797608,
+              "validation_loss": 0.06682328241212028
+            },
+            {
+              "epoch": 30,
+              "train_loss": 0.10881878418678587,
+              "validation_loss": 0.05929782654025725
+            },
+            {
+              "epoch": 31,
+              "train_loss": 0.10695316867491642,
+              "validation_loss": 0.05601831904745528
+            },
+            {
+              "epoch": 32,
+              "train_loss": 0.10666159475101279,
+              "validation_loss": 0.05546077899634838
+            },
+            {
+              "epoch": 33,
+              "train_loss": 0.10139447765110375,
+              "validation_loss": 0.048762317813400714
+            },
+            {
+              "epoch": 34,
+              "train_loss": 0.09812192459191595,
+              "validation_loss": 0.06464204697736672
+            },
+            {
+              "epoch": 35,
+              "train_loss": 0.09536334874664808,
+              "validation_loss": 0.055495668801345995
+            },
+            {
+              "epoch": 36,
+              "train_loss": 0.09262398250594542,
+              "validation_loss": 0.06702981862638678
+            },
+            {
+              "epoch": 37,
+              "train_loss": 0.09251764772290533,
+              "validation_loss": 0.059799844199525456
+            },
+            {
+              "epoch": 38,
+              "train_loss": 0.08995584077987966,
+              "validation_loss": 0.06526637649429697
+            },
+            {
+              "epoch": 39,
+              "train_loss": 0.08498002852422076,
+              "validation_loss": 0.06016161073265331
+            },
+            {
+              "epoch": 40,
+              "train_loss": 0.08541250688495575,
+              "validation_loss": 0.06785686014752303
+            },
+            {
+              "epoch": 41,
+              "train_loss": 0.08297873097290466,
+              "validation_loss": 0.05881670210510492
+            },
+            {
+              "epoch": 42,
+              "train_loss": 0.08198808382761169,
+              "validation_loss": 0.057735847242708714
+            },
+            {
+              "epoch": 43,
+              "train_loss": 0.07590955742574357,
+              "validation_loss": 0.05058697937056422
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 0,
+            "HOLD": 418,
+            "SELL": 5
+          }
+        },
+        {
+          "seed": 23,
+          "epochs": 27,
+          "best_validation_loss": 0.0553065052122942,
+          "seconds": 34.10947909997776,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.3939810972176976,
+              "validation_loss": 0.0743320541722434
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.15757620639421724,
+              "validation_loss": 0.06450577665652547
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.15006895912448306,
+              "validation_loss": 0.059055602976254055
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.14853049202689103,
+              "validation_loss": 0.06437300810856479
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.14497744971765325,
+              "validation_loss": 0.06162355015320437
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.1437859336857672,
+              "validation_loss": 0.05860569274851254
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.14268681481964401,
+              "validation_loss": 0.0694372568811689
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.14220236667564937,
+              "validation_loss": 0.06174685633076089
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.13865978527185205,
+              "validation_loss": 0.06264513065772397
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.1366995990808521,
+              "validation_loss": 0.056125071298863204
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.13467465442689983,
+              "validation_loss": 0.06289569408233676
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.13531834158030423,
+              "validation_loss": 0.06011261817600046
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.13296304553650418,
+              "validation_loss": 0.059374099996473105
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.13187568395265512,
+              "validation_loss": 0.06876490770706109
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.13095276270593917,
+              "validation_loss": 0.06326261681637593
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.12891976564348517,
+              "validation_loss": 0.06410553359559604
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.12596921920292564,
+              "validation_loss": 0.0553065052122942
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.12449868841024188,
+              "validation_loss": 0.0659935578171696
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.12227418014852258,
+              "validation_loss": 0.07414705386119229
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.11706906523216855,
+              "validation_loss": 0.06994941498019866
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.1148740802589175,
+              "validation_loss": 0.06669741070696286
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.11585509242465744,
+              "validation_loss": 0.07201830477320723
+            },
+            {
+              "epoch": 23,
+              "train_loss": 0.11222394449370247,
+              "validation_loss": 0.0595446403936616
+            },
+            {
+              "epoch": 24,
+              "train_loss": 0.10655997345199833,
+              "validation_loss": 0.06855170249140688
+            },
+            {
+              "epoch": 25,
+              "train_loss": 0.10575956657722399,
+              "validation_loss": 0.06771496829709836
+            },
+            {
+              "epoch": 26,
+              "train_loss": 0.1015667873011394,
+              "validation_loss": 0.05721047523963664
+            },
+            {
+              "epoch": 27,
+              "train_loss": 0.10077069951342298,
+              "validation_loss": 0.07125974739236492
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 0,
+            "HOLD": 418,
+            "SELL": 5
+          }
+        },
+        {
+          "seed": 37,
+          "epochs": 30,
+          "best_validation_loss": 0.05184645831052746,
+          "seconds": 47.701666600012686,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.430288659094216,
+              "validation_loss": 0.07485760641949517
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.15795838513544627,
+              "validation_loss": 0.05954964432333197
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.150859129119229,
+              "validation_loss": 0.05565270661775555
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.1510890463681577,
+              "validation_loss": 0.06183756209377732
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.14662814193538257,
+              "validation_loss": 0.057931938607777865
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.14490396149650023,
+              "validation_loss": 0.06099125702998468
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.1419630634126725,
+              "validation_loss": 0.060900909293975146
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.14111883691572524,
+              "validation_loss": 0.05642069477055754
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.13921461764771442,
+              "validation_loss": 0.06557020638138056
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.13880731765325968,
+              "validation_loss": 0.06226105016789266
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.14012401166384097,
+              "validation_loss": 0.05998062462146793
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.13742028304992557,
+              "validation_loss": 0.05970094246523721
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.13607480376958847,
+              "validation_loss": 0.055387463686721664
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.13485973255781383,
+              "validation_loss": 0.05227336533633726
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.13157809018943603,
+              "validation_loss": 0.06453194136598281
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.13103722263272707,
+              "validation_loss": 0.06346962707383293
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.1302443461903891,
+              "validation_loss": 0.06270645864840065
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.12658522115996132,
+              "validation_loss": 0.06142673974058458
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.12476309906546172,
+              "validation_loss": 0.054397539368697574
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.12299292672473888,
+              "validation_loss": 0.05184645831052746
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.12075593356381763,
+              "validation_loss": 0.05584082167063441
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.11825540625526533,
+              "validation_loss": 0.05440435691603592
+            },
+            {
+              "epoch": 23,
+              "train_loss": 0.11555356779075288,
+              "validation_loss": 0.06144368528787579
+            },
+            {
+              "epoch": 24,
+              "train_loss": 0.11399852261914835,
+              "validation_loss": 0.06447771417775325
+            },
+            {
+              "epoch": 25,
+              "train_loss": 0.11132312058047815,
+              "validation_loss": 0.07396957570953029
+            },
+            {
+              "epoch": 26,
+              "train_loss": 0.1058734900064089,
+              "validation_loss": 0.07111237357769694
+            },
+            {
+              "epoch": 27,
+              "train_loss": 0.10136957230747907,
+              "validation_loss": 0.07217467363391604
+            },
+            {
+              "epoch": 28,
+              "train_loss": 0.10077619131702881,
+              "validation_loss": 0.07057009278131383
+            },
+            {
+              "epoch": 29,
+              "train_loss": 0.10092577959906746,
+              "validation_loss": 0.06544046263609614
+            },
+            {
+              "epoch": 30,
+              "train_loss": 0.09592422936111689,
+              "validation_loss": 0.08150065184703895
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 0,
+            "HOLD": 418,
+            "SELL": 5
+          }
+        }
+      ],
+      "export": {
+        "max_abs_logits_difference": 1.1920928955078125e-06,
+        "tolerance": 0.0001,
+        "inference_ms_per_asset_cpu_warm": 0.20707812473119702,
+        "onnx_bytes": 87648,
+        "onnx_sha256": "250b1330b71492fada13bde341823b2dc405cab6a57b690af38634fae2803d4e"
+      },
+      "scaler_fit": "Only train windows whose two-bar target ends before validation_start; overlapping raw feature rows counted by training-window frequency",
+      "history_bars": 319,
+      "test_prediction_count": 1490,
+      "test_open_start_ms": 1769054400000,
+      "test_open_end_ms": 1790496000000
+    },
+    "ETH": {
+      "sample_counts": {
+        "train": 4578,
+        "validation": 423,
+        "test": 1490
+      },
+      "class_counts": {
+        "train": {
+          "BUY": 179,
+          "HOLD": 4227,
+          "SELL": 172
+        },
+        "validation": {
+          "BUY": 10,
+          "HOLD": 391,
+          "SELL": 22
+        },
+        "test": {
+          "BUY": 55,
+          "HOLD": 1374,
+          "SELL": 61
+        }
+      },
+      "selected_seed": 23,
+      "selected_validation_log_loss": 0.2592356061296804,
+      "seed_runs": [
+        {
+          "seed": 11,
+          "epochs": 21,
+          "best_validation_loss": 0.26303965225815773,
+          "seconds": 46.150696800032165,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.5412025050156646,
+              "validation_loss": 0.2911071277090481
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.281182339725395,
+              "validation_loss": 0.2735551728733948
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.2675724543838037,
+              "validation_loss": 0.27025829202362467
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.2581426975213819,
+              "validation_loss": 0.2695022832070078
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.2565613231725163,
+              "validation_loss": 0.2659312603729112
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.25465842051845455,
+              "validation_loss": 0.2678725650267942
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.2521142318016953,
+              "validation_loss": 0.2670090352850301
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.2511695937977897,
+              "validation_loss": 0.2687424027494022
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.25033908316658604,
+              "validation_loss": 0.27033391169139315
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.24729674702717197,
+              "validation_loss": 0.2693850046822003
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.24668788433902794,
+              "validation_loss": 0.26303965225815773
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.2473820753188597,
+              "validation_loss": 0.273470508732966
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.24469923776470953,
+              "validation_loss": 0.2638871387711593
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.24322748453252846,
+              "validation_loss": 0.274136841829334
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.24463068631788096,
+              "validation_loss": 0.26551815175584387
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.24189332655320564,
+              "validation_loss": 0.2692791505583695
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.24204244371503592,
+              "validation_loss": 0.26928767934441566
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.23746691261314684,
+              "validation_loss": 0.27432463876903057
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.23461576064841616,
+              "validation_loss": 0.28315133282116484
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.2342165300829543,
+              "validation_loss": 0.27703025404896053
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.23343296690533558,
+              "validation_loss": 0.2695493144648416
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 10,
+            "HOLD": 391,
+            "SELL": 22
+          }
+        },
+        {
+          "seed": 23,
+          "epochs": 23,
+          "best_validation_loss": 0.2592356061296804,
+          "seconds": 29.75978669995675,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.49304262962606216,
+              "validation_loss": 0.2871962711215019
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.27304975626369316,
+              "validation_loss": 0.2686872546161924
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.26044815892560613,
+              "validation_loss": 0.26363298509802136
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.25794969261106515,
+              "validation_loss": 0.26452654387269703
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.2529996806859142,
+              "validation_loss": 0.26423183562500135
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.2518347840135296,
+              "validation_loss": 0.26816930887954576
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.2497598793771532,
+              "validation_loss": 0.2663061703954424
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.24842848499409026,
+              "validation_loss": 0.280965907233102
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.2462529582488868,
+              "validation_loss": 0.26042433083057404
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.24397158602045643,
+              "validation_loss": 0.2619189875466483
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.2426568643293447,
+              "validation_loss": 0.2695083399968488
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.24341588695016173,
+              "validation_loss": 0.2704334386757442
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.24202293374886116,
+              "validation_loss": 0.2592356061296804
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.23715173049519458,
+              "validation_loss": 0.2754868609564645
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.23855538717988464,
+              "validation_loss": 0.26846795422690256
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.2350379562833243,
+              "validation_loss": 0.26264426005738123
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.23420725473099285,
+              "validation_loss": 0.27089782804250717
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.2334028024536868,
+              "validation_loss": 0.26778884285262655
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.23058286536898878,
+              "validation_loss": 0.2600094409925597
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.2266587790929609,
+              "validation_loss": 0.25970536576850073
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.22839851542893383,
+              "validation_loss": 0.2733740769326687
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.2212982534741362,
+              "validation_loss": 0.26779363570468767
+            },
+            {
+              "epoch": 23,
+              "train_loss": 0.21959559893649486,
+              "validation_loss": 0.2808896593217339
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 10,
+            "HOLD": 391,
+            "SELL": 22
+          }
+        },
+        {
+          "seed": 37,
+          "epochs": 18,
+          "best_validation_loss": 0.26109784681882175,
+          "seconds": 24.167377300036605,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.5304428008385003,
+              "validation_loss": 0.29137170953410013
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.2744071830271019,
+              "validation_loss": 0.27694443081106457
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.26178553069217336,
+              "validation_loss": 0.26818619455610004
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.2582791846038567,
+              "validation_loss": 0.2667853699198791
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.25545091916703516,
+              "validation_loss": 0.26477806376559393
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.2526745533363687,
+              "validation_loss": 0.2675545061273234
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.250579881378346,
+              "validation_loss": 0.26665114771042553
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.24843437048710054,
+              "validation_loss": 0.26109784681882175
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.2487559886649251,
+              "validation_loss": 0.2741912268102169
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.2441352108079526,
+              "validation_loss": 0.2757741095764296
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.2466582470676965,
+              "validation_loss": 0.28439120416130337
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.24233296347988975,
+              "validation_loss": 0.26570709315793856
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.24062281319250664,
+              "validation_loss": 0.2654559210475002
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.24227691296901968,
+              "validation_loss": 0.2669746402118887
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.2388785290531814,
+              "validation_loss": 0.29550078245145933
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.23712981678545475,
+              "validation_loss": 0.27711436418550356
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.2343971205668317,
+              "validation_loss": 0.272190477166857
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.2287823185324669,
+              "validation_loss": 0.2826477757522038
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 10,
+            "HOLD": 391,
+            "SELL": 22
+          }
+        }
+      ],
+      "export": {
+        "max_abs_logits_difference": 7.152557373046875e-07,
+        "tolerance": 0.0001,
+        "inference_ms_per_asset_cpu_warm": 0.21688749984605238,
+        "onnx_bytes": 87648,
+        "onnx_sha256": "7024ab2ef26e96cf73ecb38441f900fce956a9348d42630a9cda32d96ee0245a"
+      },
+      "scaler_fit": "Only train windows whose two-bar target ends before validation_start; overlapping raw feature rows counted by training-window frequency",
+      "history_bars": 319,
+      "test_prediction_count": 1490,
+      "test_open_start_ms": 1769054400000,
+      "test_open_end_ms": 1790496000000
+    },
+    "SOL": {
+      "sample_counts": {
+        "train": 4578,
+        "validation": 423,
+        "test": 1490
+      },
+      "class_counts": {
+        "train": {
+          "BUY": 463,
+          "HOLD": 3777,
+          "SELL": 338
+        },
+        "validation": {
+          "BUY": 13,
+          "HOLD": 379,
+          "SELL": 31
+        },
+        "test": {
+          "BUY": 81,
+          "HOLD": 1342,
+          "SELL": 67
+        }
+      },
+      "selected_seed": 23,
+      "selected_validation_log_loss": 0.3211281177188669,
+      "seed_runs": [
+        {
+          "seed": 11,
+          "epochs": 22,
+          "best_validation_loss": 0.3322707074029105,
+          "seconds": 27.819856600021012,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.690597634555565,
+              "validation_loss": 0.36549880674907137
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.4945717309084203,
+              "validation_loss": 0.34301482886075974
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.4810664341267612,
+              "validation_loss": 0.33393621018954683
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.4750188994738791,
+              "validation_loss": 0.3481634855270386
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.4705876608689626,
+              "validation_loss": 0.335687980055809
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.46996590681374073,
+              "validation_loss": 0.3342142051884106
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.46604302401343983,
+              "validation_loss": 0.3333798593708447
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.46444495022296906,
+              "validation_loss": 0.3337544873356819
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.4633871838450432,
+              "validation_loss": 0.35662616576467243
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.4593985608468453,
+              "validation_loss": 0.33804638790232794
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.45946138848861057,
+              "validation_loss": 0.3355480826326779
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.4544251275559266,
+              "validation_loss": 0.3322707074029105
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.4541965878258149,
+              "validation_loss": 0.3437687786562102
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.4485064273079236,
+              "validation_loss": 0.34404081851243973
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.4479392249551084,
+              "validation_loss": 0.3399968775255339
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.4443889026426607,
+              "validation_loss": 0.3369643156017576
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.4450681627624565,
+              "validation_loss": 0.3548643620950835
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.4393539209332731,
+              "validation_loss": 0.3442120743649347
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.43775973344842595,
+              "validation_loss": 0.3593489421265466
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.4330493226233456,
+              "validation_loss": 0.3494062391774995
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.42908383285005885,
+              "validation_loss": 0.3507929593324661
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.43003802974190974,
+              "validation_loss": 0.35676975335393635
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 13,
+            "HOLD": 379,
+            "SELL": 31
+          }
+        },
+        {
+          "seed": 23,
+          "epochs": 15,
+          "best_validation_loss": 0.3211281177188669,
+          "seconds": 16.424267199996393,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.6540031068854861,
+              "validation_loss": 0.3641178288630077
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.49244656124048763,
+              "validation_loss": 0.345928892493248
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.47610362081064117,
+              "validation_loss": 0.33681353288037436
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.4757828882171048,
+              "validation_loss": 0.3437586288366999
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.46866413826743764,
+              "validation_loss": 0.3211281177188669
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.4680193319088883,
+              "validation_loss": 0.3461644649505615
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.4658804320626789,
+              "validation_loss": 0.3398251544151987
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.46338912803265786,
+              "validation_loss": 0.3331672378948757
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.46128630886475247,
+              "validation_loss": 0.33491979220083784
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.45890377337733906,
+              "validation_loss": 0.3360407150217465
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.4559118894653188,
+              "validation_loss": 0.3391100061791284
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.4553060564729903,
+              "validation_loss": 0.34729187722717014
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.4519170615822077,
+              "validation_loss": 0.3577707090548107
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.4504455013407601,
+              "validation_loss": 0.351346526827131
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.44491649315589005,
+              "validation_loss": 0.34218429028987885
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 13,
+            "HOLD": 379,
+            "SELL": 31
+          }
+        },
+        {
+          "seed": 37,
+          "epochs": 14,
+          "best_validation_loss": 0.33198198888983044,
+          "seconds": 17.176443900039885,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.6732434580723444,
+              "validation_loss": 0.3632741666265896
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.49035029941134983,
+              "validation_loss": 0.33775952245507923
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.4790480120314492,
+              "validation_loss": 0.3348626249602863
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.47263288001219433,
+              "validation_loss": 0.33198198888983044
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.4674988438685735,
+              "validation_loss": 0.33618899647678646
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.4664111000796159,
+              "validation_loss": 0.34712729496615274
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.4676561274876197,
+              "validation_loss": 0.3365941590496472
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.4620335654666026,
+              "validation_loss": 0.33375796249934603
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.46039342963033253,
+              "validation_loss": 0.338727987238339
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.45927175672517884,
+              "validation_loss": 0.33869709074497223
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.4525064714252949,
+              "validation_loss": 0.34579348244837355
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.44812369760539794,
+              "validation_loss": 0.3454295481954302
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.44997505843639374,
+              "validation_loss": 0.3526748386876924
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.44866476994421745,
+              "validation_loss": 0.3439676303948675
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 13,
+            "HOLD": 379,
+            "SELL": 31
+          }
+        }
+      ],
+      "export": {
+        "max_abs_logits_difference": 2.384185791015625e-07,
+        "tolerance": 0.0001,
+        "inference_ms_per_asset_cpu_warm": 0.19648437410069164,
+        "onnx_bytes": 87648,
+        "onnx_sha256": "2b34870a5448b9389884964894a1de57d91a2be8a42f44d779cdb598ac507e2d"
+      },
+      "scaler_fit": "Only train windows whose two-bar target ends before validation_start; overlapping raw feature rows counted by training-window frequency",
+      "history_bars": 319,
+      "test_prediction_count": 1490,
+      "test_open_start_ms": 1769054400000,
+      "test_open_end_ms": 1790496000000
+    },
+    "SUI": {
+      "sample_counts": {
+        "train": 3310,
+        "validation": 423,
+        "test": 1490
+      },
+      "class_counts": {
+        "train": {
+          "BUY": 481,
+          "HOLD": 2392,
+          "SELL": 437
+        },
+        "validation": {
+          "BUY": 30,
+          "HOLD": 352,
+          "SELL": 41
+        },
+        "test": {
+          "BUY": 108,
+          "HOLD": 1286,
+          "SELL": 96
+        }
+      },
+      "selected_seed": 23,
+      "selected_validation_log_loss": 0.4317085061754499,
+      "seed_runs": [
+        {
+          "seed": 11,
+          "epochs": 22,
+          "best_validation_loss": 0.4457478608403887,
+          "seconds": 23.951856799947564,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.8732111568634326,
+              "validation_loss": 0.5277768330914634
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.6918223225153409,
+              "validation_loss": 0.4816908538341522
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.6657277437356802,
+              "validation_loss": 0.48124250769615173
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.6608904095796438,
+              "validation_loss": 0.4551933194909777
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.6541443209235485,
+              "validation_loss": 0.461445472070149
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.6516732722520828,
+              "validation_loss": 0.464210855109351
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.6489983980472271,
+              "validation_loss": 0.44992877755846294
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.649938641832425,
+              "validation_loss": 0.4495850844042642
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.6431228306431037,
+              "validation_loss": 0.4463170553956713
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.6397182844006098,
+              "validation_loss": 0.4556977706296103
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.6371566234872892,
+              "validation_loss": 0.4664580907140459
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.6367312801571993,
+              "validation_loss": 0.4457478608403887
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.6267138771139659,
+              "validation_loss": 0.4488510191440582
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.6301072812997378,
+              "validation_loss": 0.4639758893421718
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.6227460618202503,
+              "validation_loss": 0.47996772612844196
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.6197603539778636,
+              "validation_loss": 0.45450329780578613
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.6129739141234984,
+              "validation_loss": 0.49353296416146414
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.6111209667645968,
+              "validation_loss": 0.4618768649441855
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.6011756182863162,
+              "validation_loss": 0.47155459438051495
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.5970994365903047,
+              "validation_loss": 0.4617126839501517
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.5959874070607699,
+              "validation_loss": 0.471832526581628
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.585524232341693,
+              "validation_loss": 0.4637519930090223
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 30,
+            "HOLD": 352,
+            "SELL": 41
+          }
+        },
+        {
+          "seed": 23,
+          "epochs": 37,
+          "best_validation_loss": 0.4317085061754499,
+          "seconds": 48.12143549998291,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.8408304785306637,
+              "validation_loss": 0.5303874611854553
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.6892448663711548,
+              "validation_loss": 0.48253220319747925
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.6615468080227191,
+              "validation_loss": 0.4670828325407846
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.6570663240093452,
+              "validation_loss": 0.45689421040671213
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.6552659582633239,
+              "validation_loss": 0.4563536388533456
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.6501017018006399,
+              "validation_loss": 0.4562022771154131
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.6461320467866384,
+              "validation_loss": 0.4537971488067082
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.6417928171845583,
+              "validation_loss": 0.4471981142248426
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.640179211130509,
+              "validation_loss": 0.4622156705175127
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.6349557443306997,
+              "validation_loss": 0.4505217032773154
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.6308579926307385,
+              "validation_loss": 0.4439917206764221
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.6281573973022975,
+              "validation_loss": 0.4466768673488072
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.6252450518883191,
+              "validation_loss": 0.4495779701641628
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.6186987488315656,
+              "validation_loss": 0.44683174576078144
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.6143176142986004,
+              "validation_loss": 0.44336651052747456
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.6086915141114821,
+              "validation_loss": 0.44692412444523405
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.5980416479019018,
+              "validation_loss": 0.4348912409373692
+            },
+            {
+              "epoch": 18,
+              "train_loss": 0.5967270456827604,
+              "validation_loss": 0.4677666596003941
+            },
+            {
+              "epoch": 19,
+              "train_loss": 0.5909306928515434,
+              "validation_loss": 0.452027474130903
+            },
+            {
+              "epoch": 20,
+              "train_loss": 0.5855782198218199,
+              "validation_loss": 0.43691916125161306
+            },
+            {
+              "epoch": 21,
+              "train_loss": 0.5718433782458305,
+              "validation_loss": 0.45267763308116366
+            },
+            {
+              "epoch": 22,
+              "train_loss": 0.5633262481827003,
+              "validation_loss": 0.4547395706176758
+            },
+            {
+              "epoch": 23,
+              "train_loss": 0.5534926096980388,
+              "validation_loss": 0.45841483984674725
+            },
+            {
+              "epoch": 24,
+              "train_loss": 0.5455539237994415,
+              "validation_loss": 0.4515408320086343
+            },
+            {
+              "epoch": 25,
+              "train_loss": 0.5318976193666458,
+              "validation_loss": 0.46454502429280964
+            },
+            {
+              "epoch": 26,
+              "train_loss": 0.5260072488051194,
+              "validation_loss": 0.4749575640474047
+            },
+            {
+              "epoch": 27,
+              "train_loss": 0.5077624120391332,
+              "validation_loss": 0.4317085061754499
+            },
+            {
+              "epoch": 28,
+              "train_loss": 0.5004593924834178,
+              "validation_loss": 0.4878649243286678
+            },
+            {
+              "epoch": 29,
+              "train_loss": 0.4932343025620167,
+              "validation_loss": 0.4950969432081495
+            },
+            {
+              "epoch": 30,
+              "train_loss": 0.47106344596697736,
+              "validation_loss": 0.523475353206907
+            },
+            {
+              "epoch": 31,
+              "train_loss": 0.46260506545121854,
+              "validation_loss": 0.4878684026854379
+            },
+            {
+              "epoch": 32,
+              "train_loss": 0.4430280774831772,
+              "validation_loss": 0.5469374103205544
+            },
+            {
+              "epoch": 33,
+              "train_loss": 0.4372388697587527,
+              "validation_loss": 0.5863575424466815
+            },
+            {
+              "epoch": 34,
+              "train_loss": 0.42274430279548353,
+              "validation_loss": 0.5900526855673108
+            },
+            {
+              "epoch": 35,
+              "train_loss": 0.4202784930284207,
+              "validation_loss": 0.5581060775688717
+            },
+            {
+              "epoch": 36,
+              "train_loss": 0.40074761699025446,
+              "validation_loss": 0.605904757976532
+            },
+            {
+              "epoch": 37,
+              "train_loss": 0.3949129432439804,
+              "validation_loss": 0.5949875286647252
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 30,
+            "HOLD": 352,
+            "SELL": 41
+          }
+        },
+        {
+          "seed": 37,
+          "epochs": 17,
+          "best_validation_loss": 0.43650794454983305,
+          "seconds": 14.593038099992555,
+          "history": [
+            {
+              "epoch": 1,
+              "train_loss": 0.8578312247991562,
+              "validation_loss": 0.5114378375666482
+            },
+            {
+              "epoch": 2,
+              "train_loss": 0.6859902430039185,
+              "validation_loss": 0.46679132325308664
+            },
+            {
+              "epoch": 3,
+              "train_loss": 0.6653864114330366,
+              "validation_loss": 0.45748569284166607
+            },
+            {
+              "epoch": 4,
+              "train_loss": 0.6574979756887143,
+              "validation_loss": 0.45237775785582407
+            },
+            {
+              "epoch": 5,
+              "train_loss": 0.650105129640836,
+              "validation_loss": 0.4525612848145621
+            },
+            {
+              "epoch": 6,
+              "train_loss": 0.6475521509463971,
+              "validation_loss": 0.4523533880710602
+            },
+            {
+              "epoch": 7,
+              "train_loss": 0.6437544312614661,
+              "validation_loss": 0.43650794454983305
+            },
+            {
+              "epoch": 8,
+              "train_loss": 0.643237465276168,
+              "validation_loss": 0.4618448955672128
+            },
+            {
+              "epoch": 9,
+              "train_loss": 0.6388216534486184,
+              "validation_loss": 0.43724171604428974
+            },
+            {
+              "epoch": 10,
+              "train_loss": 0.635925024174727,
+              "validation_loss": 0.4524253819669996
+            },
+            {
+              "epoch": 11,
+              "train_loss": 0.6312931993832955,
+              "validation_loss": 0.43893817918641226
+            },
+            {
+              "epoch": 12,
+              "train_loss": 0.6353122311142775,
+              "validation_loss": 0.4636983062539782
+            },
+            {
+              "epoch": 13,
+              "train_loss": 0.6265175216473066,
+              "validation_loss": 0.4704229661396572
+            },
+            {
+              "epoch": 14,
+              "train_loss": 0.6209169981571344,
+              "validation_loss": 0.4587409624031612
+            },
+            {
+              "epoch": 15,
+              "train_loss": 0.6196256388838475,
+              "validation_loss": 0.49680215971810476
+            },
+            {
+              "epoch": 16,
+              "train_loss": 0.608326867222786,
+              "validation_loss": 0.4717628615243094
+            },
+            {
+              "epoch": 17,
+              "train_loss": 0.6044325530529022,
+              "validation_loss": 0.4572553719793047
+            }
+          ],
+          "parameters": 21187,
+          "validation_class_counts": {
+            "BUY": 30,
+            "HOLD": 352,
+            "SELL": 41
+          }
+        }
+      ],
+      "export": {
+        "max_abs_logits_difference": 3.5762786865234375e-07,
+        "tolerance": 0.0001,
+        "inference_ms_per_asset_cpu_warm": 0.19496562345011625,
+        "onnx_bytes": 87648,
+        "onnx_sha256": "306bd9afe3dba1d7de8970ed93e4b0dcc4701c3d294d56cc8089a60858e8b688"
+      },
+      "scaler_fit": "Only train windows whose two-bar target ends before validation_start; overlapping raw feature rows counted by training-window frequency",
+      "history_bars": 319,
+      "test_prediction_count": 1490,
+      "test_open_start_ms": 1769054400000,
+      "test_open_end_ms": 1790496000000
+    }
+  },
+  "validation_seed_dispersion": {
+    "BTC": {
+      "seed_count": 3,
+      "validation_log_loss_min": 0.048762317813400714,
+      "validation_log_loss_median": 0.05184645831052746,
+      "validation_log_loss_max": 0.0553065052122942
+    },
+    "ETH": {
+      "seed_count": 3,
+      "validation_log_loss_min": 0.2592356061296804,
+      "validation_log_loss_median": 0.26109784681882175,
+      "validation_log_loss_max": 0.26303965225815773
+    },
+    "SOL": {
+      "seed_count": 3,
+      "validation_log_loss_min": 0.3211281177188669,
+      "validation_log_loss_median": 0.33198198888983044,
+      "validation_log_loss_max": 0.3322707074029105
+    },
+    "SUI": {
+      "seed_count": 3,
+      "validation_log_loss_min": 0.4317085061754499,
+      "validation_log_loss_median": 0.43650794454983305,
+      "validation_log_loss_max": 0.4457478608403887
+    }
+  },
+  "fair_comparison_note": "All architectures share features, targets, chronological boundaries and evaluator; no hyperparameter search.",
+  "attention_note": null,
+  "software_versions": {
+    "python": "3.12.14",
+    "torch": "2.14.0+cpu",
+    "onnx": "1.23.0",
+    "onnxruntime": "1.30.0",
+    "numpy": "2.5.3"
+  },
+  "runtime_warm_inference_ms_all_assets": 0.8154156221280573,
+  "limits": [
+    "Training archive includes missing 4H bars; no windows cross gaps",
+    "OHLCV features only; no historical sentiment or on-chain observations",
+    "Technical export parity does not establish profitable trading"
+  ],
+  "evaluation": {
+    "status": "complete",
+    "reason": null,
+    "label_verification": {
+      "checked": 5960,
+      "method": "independent adjusted-EMA(5), 2-bar forward, alpha 0.038, source upper threshold 0.288",
+      "status": "complete"
+    },
+    "classification": {
+      "by_asset": {
+        "BTC": {
+          "accuracy": 0.9590604026845637,
+          "balanced_accuracy_present_classes": 0.3431549228089145,
+          "class_counts": {
+            "BUY": 31,
+            "HOLD": 1432,
+            "SELL": 27
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              1,
+              30,
+              0
+            ],
+            [
+              1,
+              1428,
+              3
+            ],
+            [
+              0,
+              27,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.015422571538680225,
+          "log_loss": 0.17797955038873292,
+          "macro_f1_all_three_classes": 0.34656472160757384,
+          "multiclass_brier_divided_by_three": 0.02461868572282991,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": 0.5,
+              "count": 2,
+              "lower": 0.3,
+              "mean_confidence": 0.37234589569632404,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 0.0,
+              "count": 1,
+              "lower": 0.4,
+              "mean_confidence": 0.4764270779500758,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.5,
+              "count": 6,
+              "lower": 0.5,
+              "mean_confidence": 0.5352322756330851,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.875,
+              "count": 16,
+              "lower": 0.6,
+              "mean_confidence": 0.6655821612047661,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.75,
+              "count": 24,
+              "lower": 0.7,
+              "mean_confidence": 0.7650470358705485,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8636363636363636,
+              "count": 88,
+              "lower": 0.8,
+              "mean_confidence": 0.8548867101148158,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9733924611973392,
+              "count": 1353,
+              "lower": 0.9,
+              "mean_confidence": 0.9863671240656057,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "ETH": {
+          "accuracy": 0.9208053691275168,
+          "balanced_accuracy_present_classes": 0.3665639138901362,
+          "class_counts": {
+            "BUY": 55,
+            "HOLD": 1374,
+            "SELL": 61
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              4,
+              51,
+              0
+            ],
+            [
+              4,
+              1366,
+              4
+            ],
+            [
+              0,
+              59,
+              2
+            ]
+          ],
+          "expected_calibration_error": 0.0127883058598266,
+          "log_loss": 0.2738194137508753,
+          "macro_f1_all_three_classes": 0.3817607035831702,
+          "multiclass_brier_divided_by_three": 0.0446536261069077,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 0.5,
+              "count": 2,
+              "lower": 0.4,
+              "mean_confidence": 0.49643195453393907,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.47619047619047616,
+              "count": 21,
+              "lower": 0.5,
+              "mean_confidence": 0.5563123221823739,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.68,
+              "count": 25,
+              "lower": 0.6,
+              "mean_confidence": 0.647709333874591,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7619047619047619,
+              "count": 42,
+              "lower": 0.7,
+              "mean_confidence": 0.7647738237554141,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.838150289017341,
+              "count": 173,
+              "lower": 0.8,
+              "mean_confidence": 0.8610580663420022,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9511002444987775,
+              "count": 1227,
+              "lower": 0.9,
+              "mean_confidence": 0.9612665592064797,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "SOL": {
+          "accuracy": 0.9020134228187919,
+          "balanced_accuracy_present_classes": 0.34629052489205275,
+          "class_counts": {
+            "BUY": 81,
+            "HOLD": 1342,
+            "SELL": 67
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              2,
+              79,
+              0
+            ],
+            [
+              0,
+              1341,
+              1
+            ],
+            [
+              0,
+              66,
+              1
+            ]
+          ],
+          "expected_calibration_error": 0.00890862501583384,
+          "log_loss": 0.3205171009085144,
+          "macro_f1_all_three_classes": 0.3418505623667208,
+          "multiclass_brier_divided_by_three": 0.05521515688980371,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.4,
+              "mean_confidence": null,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.65,
+              "count": 20,
+              "lower": 0.5,
+              "mean_confidence": 0.5490368870720019,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.6842105263157895,
+              "count": 38,
+              "lower": 0.6,
+              "mean_confidence": 0.6588771562772906,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.6904761904761905,
+              "count": 84,
+              "lower": 0.7,
+              "mean_confidence": 0.7554105459931932,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8549618320610687,
+              "count": 262,
+              "lower": 0.8,
+              "mean_confidence": 0.863472573823236,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.9419889502762431,
+              "count": 1086,
+              "lower": 0.9,
+              "mean_confidence": 0.9443900743540087,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        },
+        "SUI": {
+          "accuracy": 0.8624161073825504,
+          "balanced_accuracy_present_classes": 0.3641735307105965,
+          "class_counts": {
+            "BUY": 108,
+            "HOLD": 1286,
+            "SELL": 96
+          },
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              11,
+              97,
+              0
+            ],
+            [
+              11,
+              1274,
+              1
+            ],
+            [
+              0,
+              96,
+              0
+            ]
+          ],
+          "expected_calibration_error": 0.04273771466533231,
+          "log_loss": 0.4678450113138066,
+          "macro_f1_all_three_classes": 0.3649221827935958,
+          "multiclass_brier_divided_by_three": 0.07948402340517842,
+          "reliability_ten_bins": [
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.0,
+              "mean_confidence": null,
+              "upper": 0.1
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.1,
+              "mean_confidence": null,
+              "upper": 0.2
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.2,
+              "mean_confidence": null,
+              "upper": 0.3
+            },
+            {
+              "accuracy": null,
+              "count": 0,
+              "lower": 0.3,
+              "mean_confidence": null,
+              "upper": 0.4
+            },
+            {
+              "accuracy": 0.5,
+              "count": 4,
+              "lower": 0.4,
+              "mean_confidence": 0.4938978420925012,
+              "upper": 0.5
+            },
+            {
+              "accuracy": 0.6153846153846154,
+              "count": 39,
+              "lower": 0.5,
+              "mean_confidence": 0.5566517054989811,
+              "upper": 0.6
+            },
+            {
+              "accuracy": 0.7395833333333334,
+              "count": 96,
+              "lower": 0.6,
+              "mean_confidence": 0.6604544991357681,
+              "upper": 0.7
+            },
+            {
+              "accuracy": 0.7991071428571429,
+              "count": 224,
+              "lower": 0.7,
+              "mean_confidence": 0.7581184364957841,
+              "upper": 0.8
+            },
+            {
+              "accuracy": 0.8935361216730038,
+              "count": 526,
+              "lower": 0.8,
+              "mean_confidence": 0.8555245278661604,
+              "upper": 0.9
+            },
+            {
+              "accuracy": 0.8968386023294509,
+              "count": 601,
+              "lower": 0.9,
+              "mean_confidence": 0.9377575142826375,
+              "upper": 1.0
+            }
+          ],
+          "samples": 1490,
+          "status": "complete"
+        }
+      },
+      "combined": {
+        "accuracy": 0.9110738255033557,
+        "balanced_accuracy_present_classes": 0.35760202473140196,
+        "class_counts": {
+          "BUY": 275,
+          "HOLD": 5434,
+          "SELL": 251
+        },
+        "class_order": [
+          "BUY",
+          "HOLD",
+          "SELL"
+        ],
+        "confusion_matrix_truth_rows_predicted_columns": [
+          [
+            18,
+            257,
+            0
+          ],
+          [
+            16,
+            5409,
+            9
+          ],
+          [
+            0,
+            248,
+            3
+          ]
+        ],
+        "expected_calibration_error": 0.01524803840310796,
+        "log_loss": 0.3100402690904831,
+        "macro_f1_all_three_classes": 0.3642047591710417,
+        "multiclass_brier_divided_by_three": 0.05099287303117981,
+        "reliability_ten_bins": [
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.0,
+            "mean_confidence": null,
+            "upper": 0.1
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.1,
+            "mean_confidence": null,
+            "upper": 0.2
+          },
+          {
+            "accuracy": null,
+            "count": 0,
+            "lower": 0.2,
+            "mean_confidence": null,
+            "upper": 0.3
+          },
+          {
+            "accuracy": 0.5,
+            "count": 2,
+            "lower": 0.3,
+            "mean_confidence": 0.37234589569632404,
+            "upper": 0.4
+          },
+          {
+            "accuracy": 0.42857142857142855,
+            "count": 7,
+            "lower": 0.4,
+            "mean_confidence": 0.4921260507697084,
+            "upper": 0.5
+          },
+          {
+            "accuracy": 0.5813953488372093,
+            "count": 86,
+            "lower": 0.5,
+            "mean_confidence": 0.5533035659945196,
+            "upper": 0.6
+          },
+          {
+            "accuracy": 0.7314285714285714,
+            "count": 175,
+            "lower": 0.6,
+            "mean_confidence": 0.6587600673240674,
+            "upper": 0.7
+          },
+          {
+            "accuracy": 0.767379679144385,
+            "count": 374,
+            "lower": 0.7,
+            "mean_confidence": 0.758702259617926,
+            "upper": 0.8
+          },
+          {
+            "accuracy": 0.8722592945662536,
+            "count": 1049,
+            "lower": 0.8,
+            "mean_confidence": 0.8583687244676437,
+            "upper": 0.9
+          },
+          {
+            "accuracy": 0.9482071713147411,
+            "count": 4267,
+            "lower": 0.9,
+            "mean_confidence": 0.9616190939394027,
+            "upper": 1.0
+          }
+        ],
+        "samples": 5960,
+        "status": "complete"
+      }
+    },
+    "replay": {
+      "limited_base": {
+        "attempts": {
+          "buy": 34,
+          "duplicate_or_active": 15,
+          "hold": 5914,
+          "insufficient_budget": 9,
+          "missed_window": 0,
+          "sell": 12,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 8,
+        "cost_scenario": "base",
+        "fees_paid_usd": 317.41333128902386,
+        "final_net_liquidation_equity": 9104.954192164565,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.3126919046541612,
+        "net_return": -0.08950458078354351,
+        "slippage_cost_usd": 39.676531922141834,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 6,
+        "synthetic_spread_cost_usd": 39.676407352252156,
+        "terminal_liquidations": 2,
+        "time_in_market_fraction": 0.6762734584450402,
+        "turnover_notional_usd": 79353.33282225598
+      },
+      "limited_stress": {
+        "attempts": {
+          "buy": 34,
+          "duplicate_or_active": 15,
+          "hold": 5914,
+          "insufficient_budget": 9,
+          "missed_window": 0,
+          "sell": 12,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 8,
+        "cost_scenario": "stress",
+        "fees_paid_usd": 586.6995640295212,
+        "final_net_liquidation_equity": 8831.143578513427,
+        "initial_equity": 10000.0,
+        "limitations_enabled": true,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.3063610556112306,
+        "net_return": -0.11688564214865726,
+        "slippage_cost_usd": 73.33693668376937,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 6,
+        "synthetic_spread_cost_usd": 73.33650120034618,
+        "terminal_liquidations": 2,
+        "time_in_market_fraction": 0.6762734584450402,
+        "turnover_notional_usd": 73337.44550369013
+      },
+      "unlimited_base": {
+        "attempts": {
+          "buy": 34,
+          "duplicate_or_active": 0,
+          "hold": 5914,
+          "insufficient_budget": 31,
+          "missed_window": 0,
+          "sell": 12,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 2,
+        "cost_scenario": "base",
+        "fees_paid_usd": 237.46922450319087,
+        "final_net_liquidation_equity": 10696.505611534323,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.5327495114713758,
+        "net_return": 0.06965056115343238,
+        "slippage_cost_usd": 29.683893977581366,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 29.68414231330009,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.9336461126005362,
+        "turnover_notional_usd": 59367.30612579772
+      },
+      "unlimited_stress": {
+        "attempts": {
+          "buy": 34,
+          "duplicate_or_active": 0,
+          "hold": 5914,
+          "insufficient_budget": 31,
+          "missed_window": 0,
+          "sell": 12,
+          "spread_rejected": 0
+        },
+        "completed_natural_trades": 2,
+        "cost_scenario": "stress",
+        "fees_paid_usd": 467.82802644208067,
+        "final_net_liquidation_equity": 10380.366757750484,
+        "initial_equity": 10000.0,
+        "limitations_enabled": false,
+        "mark_cadence_ms": 14400000,
+        "mark_count": 1493,
+        "max_sampled_drawdown": 0.5327495114713758,
+        "net_return": 0.03803667577504832,
+        "slippage_cost_usd": 58.47940997945427,
+        "status": "complete",
+        "stop_range_confirmations_with_unknown_intrabar_time": 0,
+        "synthetic_spread_cost_usd": 58.48037513402222,
+        "terminal_liquidations": 1,
+        "time_in_market_fraction": 0.9336461126005362,
+        "turnover_notional_usd": 58478.50330526009
+      }
+    },
+    "per_asset_replay": {
+      "BTC": {
+        "limited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1485,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 3,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 1,
+          "cost_scenario": "base",
+          "fees_paid_usd": 77.15758153452933,
+          "final_net_liquidation_equity": 10856.075504764713,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.03826998336074516,
+          "net_return": 0.08560755047647128,
+          "slippage_cost_usd": 9.644933411321094,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 9.645171542118414,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.1581769436997319,
+          "turnover_notional_usd": 19289.39538363233
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1485,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 3,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 1,
+          "cost_scenario": "base",
+          "fees_paid_usd": 164.36307862956818,
+          "final_net_liquidation_equity": 11799.635035940395,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.07560498048726205,
+          "net_return": 0.17996350359403945,
+          "slippage_cost_usd": 20.54588096469491,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 20.546382237288327,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.1581769436997319,
+          "turnover_notional_usd": 41090.76965739205
+        }
+      },
+      "ETH": {
+        "limited_base": {
+          "attempts": {
+            "buy": 8,
+            "duplicate_or_active": 5,
+            "hold": 1476,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 6,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 2,
+          "cost_scenario": "base",
+          "fees_paid_usd": 115.0637719516757,
+          "final_net_liquidation_equity": 10958.821779357651,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.11639815942347642,
+          "net_return": 0.09588217793576503,
+          "slippage_cost_usd": 14.383243561158181,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 1,
+          "synthetic_spread_cost_usd": 14.383519224234325,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.5160857908847185,
+          "turnover_notional_usd": 28765.942987918927
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 8,
+            "duplicate_or_active": 0,
+            "hold": 1476,
+            "insufficient_budget": 6,
+            "missed_window": 0,
+            "sell": 6,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 1,
+          "cost_scenario": "base",
+          "fees_paid_usd": 184.27508712483674,
+          "final_net_liquidation_equity": 15118.692849641167,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.2780438643929912,
+          "net_return": 0.5118692849641167,
+          "slippage_cost_usd": 23.035717391518133,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 23.03705465169095,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.7459785522788204,
+          "turnover_notional_usd": 46068.77178120918
+        }
+      },
+      "SOL": {
+        "limited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1486,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 2,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 1,
+          "cost_scenario": "base",
+          "fees_paid_usd": 78.04210235748984,
+          "final_net_liquidation_equity": 11384.982464323228,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.06125778453199271,
+          "net_return": 0.13849824643232278,
+          "slippage_cost_usd": 9.755630989735648,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 1,
+          "synthetic_spread_cost_usd": 9.75600162378477,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.17627345844504022,
+          "turnover_notional_usd": 19510.52558937246
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 2,
+            "duplicate_or_active": 0,
+            "hold": 1486,
+            "insufficient_budget": 1,
+            "missed_window": 0,
+            "sell": 2,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 0,
+          "cost_scenario": "base",
+          "fees_paid_usd": 96.05262473178564,
+          "final_net_liquidation_equity": 13996.784833115022,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.37279853405273333,
+          "net_return": 0.39967848331150213,
+          "slippage_cost_usd": 12.007604302738741,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 12.00863351616185,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.9369973190348525,
+          "turnover_notional_usd": 24013.156182946408
+        }
+      },
+      "SUI": {
+        "limited_base": {
+          "attempts": {
+            "buy": 22,
+            "duplicate_or_active": 16,
+            "hold": 1467,
+            "insufficient_budget": 0,
+            "missed_window": 0,
+            "sell": 1,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 5,
+          "cost_scenario": "base",
+          "fees_paid_usd": 201.79176280659283,
+          "final_net_liquidation_equity": 9757.049481295655,
+          "initial_equity": 10000.0,
+          "limitations_enabled": true,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.27097887109192553,
+          "net_return": -0.02429505187043446,
+          "slippage_cost_usd": 25.22396636712672,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 4,
+          "synthetic_spread_cost_usd": 25.223968689418964,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.5080428954423593,
+          "turnover_notional_usd": 50447.94070164821
+        },
+        "unlimited_base": {
+          "attempts": {
+            "buy": 22,
+            "duplicate_or_active": 0,
+            "hold": 1467,
+            "insufficient_budget": 20,
+            "missed_window": 0,
+            "sell": 1,
+            "spread_rejected": 0
+          },
+          "completed_natural_trades": 1,
+          "cost_scenario": "base",
+          "fees_paid_usd": 164.81340863265817,
+          "final_net_liquidation_equity": 11094.073593327215,
+          "initial_equity": 10000.0,
+          "limitations_enabled": false,
+          "mark_cadence_ms": 14400000,
+          "mark_count": 1493,
+          "max_sampled_drawdown": 0.5327495114713758,
+          "net_return": 0.10940735933272161,
+          "slippage_cost_usd": 20.60199595133175,
+          "status": "complete",
+          "stop_range_confirmations_with_unknown_intrabar_time": 0,
+          "synthetic_spread_cost_usd": 20.602320974161387,
+          "terminal_liquidations": 1,
+          "time_in_market_fraction": 0.9329758713136729,
+          "turnover_notional_usd": 41203.35215816455
+        }
+      }
+    },
+    "baselines": {
+      "cash_no_trade": {
+        "final_net_liquidation_equity": 10000.0,
+        "net_return": 0.0
+      },
+      "equal_cash_buy_and_hold_base": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 8964.801201653801,
+        "net_return": -0.10351987983461985,
+        "status": "complete"
+      },
+      "equal_cash_buy_and_hold_stress": {
+        "description": "Equal initial cash per asset, next-observation open entry, terminal close exit, same synthetic spread/fees/slippage; no stops",
+        "final_net_liquidation_equity": 8875.59727797866,
+        "net_return": -0.11244027220213393,
+        "status": "complete"
+      },
+      "linear_logistic": {
+        "status": "requires separately trained held-out predictions"
+      },
+      "majority_class": {
+        "status": "requires frozen training-only class counts/predictions"
+      }
+    },
+    "coverage_4h": {
+      "cadence_ms": 14400000,
+      "complete": true,
+      "expected_bars_per_asset": 1492,
+      "missing_bar_counts": {
+        "BTC": 0,
+        "ETH": 0,
+        "SOL": 0,
+        "SUI": 0
+      },
+      "missing_bars": {}
+    },
+    "prediction_coverage": {
+      "available": 5960,
+      "expected": 5960,
+      "first_missing": [],
+      "missing": 0
+    },
+    "mark_cadence_ms": 14400000,
+    "stop_timing_limitation": "OHLC range confirms a stop only after the bar; intrabar crossing/fill time is unknown. Replay fills at the bar open, so its later low is eligible at the next observation; a real post-open quote may have entered after that low.",
+    "quote_proxy": "Candle open/close midpoint with declared symmetric spread; not historical Kraken bid/ask",
+    "recommendation": "no demonstrated winner"
+  },
+  "full_evaluation_report_sha256": "1414a8ffb4d78cfbcbed962b4dae45f2637759f8065a2df0a50b158b90179365",
+  "full_evaluation_report_file": "lstm_classifier_v1.4033451e9329.v2.evaluation.json",
+  "evaluation_revision": "v2: entry-open bar stop proxy and spread-corrected bid stop fill",
+  "validation_folds": {
+    "BTC": [
+      {
+        "name": "expanding_50_60",
+        "train_samples": 3034,
+        "early_stopping_samples": 371,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 14,
+            "HOLD": 706,
+            "SELL": 24
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              14,
+              0
+            ],
+            [
+              0,
+              706,
+              0
+            ],
+            [
+              0,
+              24,
+              0
+            ]
+          ],
+          "accuracy": 0.9489247311827957,
+          "balanced_accuracy_present_classes": 0.3333333333333333,
+          "macro_f1_all_three_classes": 0.32459770114942527,
+          "log_loss": 0.1956960665042861,
+          "multiclass_brier_divided_by_three": 0.030739693234894054,
+          "expected_calibration_error": 0.011429777905097284,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 1,
+              "accuracy": 1.0,
+              "mean_confidence": 0.6823054884364016
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 9,
+              "accuracy": 0.7777777777777778,
+              "mean_confidence": 0.7580720346431183
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 62,
+              "accuracy": 0.8387096774193549,
+              "mean_confidence": 0.8619200872779931
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 672,
+              "accuracy": 0.9613095238095238,
+              "mean_confidence": 0.971085808259496
+            }
+          ]
+        },
+        "best_validation_loss": 0.18540288290629783
+      },
+      {
+        "name": "expanding_60_70",
+        "train_samples": 3705,
+        "early_stopping_samples": 446,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 4,
+            "HOLD": 740,
+            "SELL": 0
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              0,
+              4,
+              0
+            ],
+            [
+              0,
+              740,
+              0
+            ],
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          "accuracy": 0.9946236559139785,
+          "balanced_accuracy_present_classes": 0.5,
+          "macro_f1_all_three_classes": 0.3324348607367475,
+          "log_loss": 0.0359617730788081,
+          "multiclass_brier_divided_by_three": 0.0035639916571526768,
+          "expected_calibration_error": 0.01400849753952073,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 1,
+              "accuracy": 1.0,
+              "mean_confidence": 0.7605804729225232
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 11,
+              "accuracy": 0.9090909090909091,
+              "mean_confidence": 0.8711807218886185
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 732,
+              "accuracy": 0.9959016393442623,
+              "mean_confidence": 0.9825602587662559
+            }
+          ]
+        },
+        "best_validation_loss": 0.13100935665092298
+      }
+    ],
+    "ETH": [
+      {
+        "name": "expanding_50_60",
+        "train_samples": 2713,
+        "early_stopping_samples": 371,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 44,
+            "HOLD": 648,
+            "SELL": 52
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              2,
+              42,
+              0
+            ],
+            [
+              1,
+              647,
+              0
+            ],
+            [
+              0,
+              50,
+              2
+            ]
+          ],
+          "accuracy": 0.875,
+          "balanced_accuracy_present_classes": 0.36079095801318023,
+          "macro_f1_all_three_classes": 0.3640430891449724,
+          "log_loss": 0.4045520473800941,
+          "multiclass_brier_divided_by_three": 0.06990636242509458,
+          "expected_calibration_error": 0.04226476774062859,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 4,
+              "accuracy": 0.25,
+              "mean_confidence": 0.4968530338944248
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 38,
+              "accuracy": 0.7105263157894737,
+              "mean_confidence": 0.5534137376300466
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 43,
+              "accuracy": 0.7441860465116279,
+              "mean_confidence": 0.6550664162653624
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 70,
+              "accuracy": 0.7857142857142857,
+              "mean_confidence": 0.7513696165627289
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 102,
+              "accuracy": 0.8137254901960784,
+              "mean_confidence": 0.8542918303035142
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 487,
+              "accuracy": 0.9301848049281314,
+              "mean_confidence": 0.9591648038218376
+            }
+          ]
+        },
+        "best_validation_loss": 0.31502587472399074
+      },
+      {
+        "name": "expanding_60_70",
+        "train_samples": 3384,
+        "early_stopping_samples": 446,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 45,
+            "HOLD": 675,
+            "SELL": 24
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              3,
+              42,
+              0
+            ],
+            [
+              7,
+              666,
+              2
+            ],
+            [
+              0,
+              23,
+              1
+            ]
+          ],
+          "accuracy": 0.9005376344086021,
+          "balanced_accuracy_present_classes": 0.365,
+          "macro_f1_all_three_classes": 0.37684446807253824,
+          "log_loss": 0.31844033435031227,
+          "multiclass_brier_divided_by_three": 0.055671020385905434,
+          "expected_calibration_error": 0.019861722396538134,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 1,
+              "accuracy": 0.0,
+              "mean_confidence": 0.4996620117664249
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 12,
+              "accuracy": 0.5833333333333334,
+              "mean_confidence": 0.5595029389925938
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 24,
+              "accuracy": 0.7083333333333334,
+              "mean_confidence": 0.6558326445205972
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 33,
+              "accuracy": 0.7272727272727273,
+              "mean_confidence": 0.7581446857063131
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 119,
+              "accuracy": 0.8319327731092437,
+              "mean_confidence": 0.8595184705562857
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 555,
+              "accuracy": 0.9423423423423424,
+              "mean_confidence": 0.957531541555238
+            }
+          ]
+        },
+        "best_validation_loss": 0.3574164892945971
+      }
+    ],
+    "SOL": [
+      {
+        "name": "expanding_50_60",
+        "train_samples": 2713,
+        "early_stopping_samples": 371,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 84,
+            "HOLD": 579,
+            "SELL": 81
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              14,
+              70,
+              0
+            ],
+            [
+              7,
+              572,
+              0
+            ],
+            [
+              3,
+              77,
+              1
+            ]
+          ],
+          "accuracy": 0.7889784946236559,
+          "balanced_accuracy_present_classes": 0.38897417855391375,
+          "macro_f1_all_three_classes": 0.3883351451216961,
+          "log_loss": 0.5548573630390041,
+          "multiclass_brier_divided_by_three": 0.10589982775782358,
+          "expected_calibration_error": 0.03928949645300829,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 7,
+              "accuracy": 0.42857142857142855,
+              "mean_confidence": 0.4619608987523326
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 31,
+              "accuracy": 0.45161290322580644,
+              "mean_confidence": 0.5496470441724908
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 76,
+              "accuracy": 0.6710526315789473,
+              "mean_confidence": 0.6565668741389719
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 114,
+              "accuracy": 0.6491228070175439,
+              "mean_confidence": 0.7528431546063648
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 284,
+              "accuracy": 0.8309859154929577,
+              "mean_confidence": 0.86024234719946
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 232,
+              "accuracy": 0.9008620689655172,
+              "mean_confidence": 0.9212273142466132
+            }
+          ]
+        },
+        "best_validation_loss": 0.47255033254623413
+      },
+      {
+        "name": "expanding_60_70",
+        "train_samples": 3384,
+        "early_stopping_samples": 446,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 55,
+            "HOLD": 650,
+            "SELL": 39
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              6,
+              49,
+              0
+            ],
+            [
+              2,
+              648,
+              0
+            ],
+            [
+              0,
+              39,
+              0
+            ]
+          ],
+          "accuracy": 0.8790322580645161,
+          "balanced_accuracy_present_classes": 0.3686713286713286,
+          "macro_f1_all_three_classes": 0.3751803751803752,
+          "log_loss": 0.40809960158355846,
+          "multiclass_brier_divided_by_three": 0.07136137157997736,
+          "expected_calibration_error": 0.03984031111671485,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 12,
+              "accuracy": 0.5833333333333334,
+              "mean_confidence": 0.5464838854697588
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 45,
+              "accuracy": 0.8444444444444444,
+              "mean_confidence": 0.6594564428614191
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 119,
+              "accuracy": 0.7563025210084033,
+              "mean_confidence": 0.7581313436939255
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 346,
+              "accuracy": 0.9161849710982659,
+              "mean_confidence": 0.8616752245998631
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 222,
+              "accuracy": 0.9099099099099099,
+              "mean_confidence": 0.9180024136811366
+            }
+          ]
+        },
+        "best_validation_loss": 0.4767577350139618
+      }
+    ],
+    "SUI": [
+      {
+        "name": "expanding_50_60",
+        "train_samples": 1445,
+        "early_stopping_samples": 371,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 118,
+            "HOLD": 508,
+            "SELL": 118
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              21,
+              94,
+              3
+            ],
+            [
+              18,
+              484,
+              6
+            ],
+            [
+              1,
+              101,
+              16
+            ]
+          ],
+          "accuracy": 0.7002688172043011,
+          "balanced_accuracy_present_classes": 0.42210507584856977,
+          "macro_f1_all_three_classes": 0.4350334240921084,
+          "log_loss": 0.7451614859204347,
+          "multiclass_brier_divided_by_three": 0.14525443588256298,
+          "expected_calibration_error": 0.0401790744672499,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 40,
+              "accuracy": 0.425,
+              "mean_confidence": 0.47326511687048856
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 126,
+              "accuracy": 0.6111111111111112,
+              "mean_confidence": 0.5513590969415912
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 163,
+              "accuracy": 0.6748466257668712,
+              "mean_confidence": 0.6538243326978455
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 245,
+              "accuracy": 0.763265306122449,
+              "mean_confidence": 0.7523376599471675
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 163,
+              "accuracy": 0.754601226993865,
+              "mean_confidence": 0.8386628233061022
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 7,
+              "accuracy": 1.0,
+              "mean_confidence": 0.9102963340907074
+            }
+          ]
+        },
+        "best_validation_loss": 0.689672182003657
+      },
+      {
+        "name": "expanding_60_70",
+        "train_samples": 2116,
+        "early_stopping_samples": 446,
+        "validation_samples": 744,
+        "validation_classification": {
+          "status": "complete",
+          "samples": 744,
+          "class_order": [
+            "BUY",
+            "HOLD",
+            "SELL"
+          ],
+          "class_counts": {
+            "BUY": 64,
+            "HOLD": 603,
+            "SELL": 77
+          },
+          "confusion_matrix_truth_rows_predicted_columns": [
+            [
+              9,
+              55,
+              0
+            ],
+            [
+              5,
+              592,
+              6
+            ],
+            [
+              0,
+              72,
+              5
+            ]
+          ],
+          "accuracy": 0.8145161290322581,
+          "balanced_accuracy_present_classes": 0.39577264740511003,
+          "macro_f1_all_three_classes": 0.4133394341412496,
+          "log_loss": 0.5431097114497144,
+          "multiclass_brier_divided_by_three": 0.1006862722955043,
+          "expected_calibration_error": 0.0672503635436467,
+          "reliability_ten_bins": [
+            {
+              "lower": 0.0,
+              "upper": 0.1,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.1,
+              "upper": 0.2,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.2,
+              "upper": 0.3,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.3,
+              "upper": 0.4,
+              "count": 0,
+              "accuracy": null,
+              "mean_confidence": null
+            },
+            {
+              "lower": 0.4,
+              "upper": 0.5,
+              "count": 9,
+              "accuracy": 0.4444444444444444,
+              "mean_confidence": 0.4800710691498081
+            },
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "count": 84,
+              "accuracy": 0.6666666666666666,
+              "mean_confidence": 0.5536542257194957
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "count": 140,
+              "accuracy": 0.75,
+              "mean_confidence": 0.6565227475448961
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "count": 217,
+              "accuracy": 0.8294930875576036,
+              "mean_confidence": 0.7547527489806335
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "count": 277,
+              "accuracy": 0.8808664259927798,
+              "mean_confidence": 0.8470726254370208
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.0,
+              "count": 17,
+              "accuracy": 1.0,
+              "mean_confidence": 0.9085744561352811
+            }
+          ]
+        },
+        "best_validation_loss": 0.6865813050951276
+      }
+    ]
+  },
+  "full_fold_report_sha256": "f28bf7cfc658fb22f5a6c9adde9ea2f08537d349dff41f30b9fcb49b7059595c",
+  "full_fold_report_file": "validation_folds.json",
+  "runtime_benchmark": {
+    "model_id": "lstm_classifier_v1@4033451e9329",
+    "artifact_id": "4033451e932946bc33c26b517a07bf5a71a2d81ac2227c6b5f4df6476a61ac6d",
+    "manifest_sha256": "e6384b250dec1d3774bdaeb6929a6f8416912fb4653bd80445d4bf8e9ac820f5",
+    "candles_sha256": "01e20e4c3bc1caef9acd367d39db3e9efe522e163b45b5f36ba85ce1a3e2287d",
+    "method": "Fresh Windows process per architecture; 319 prepared contiguous completed Kraken/USD 4H bars per asset; one warm call; then sequential BTC/ETH/SOL/SUI adapter predictions. Includes feature construction, scaler, ONNX CPU and softmax; excludes data fetch and dashboard orchestration.",
+    "repetitions": 50,
+    "asset_order": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "SUI"
+    ],
+    "per_asset": {
+      "BTC": {
+        "count": 50,
+        "p50_ms": 7.90455,
+        "p95_ms": 8.854,
+        "max_ms": 12.0009
+      },
+      "ETH": {
+        "count": 50,
+        "p50_ms": 7.87435,
+        "p95_ms": 9.0787,
+        "max_ms": 9.1949
+      },
+      "SOL": {
+        "count": 50,
+        "p50_ms": 7.82515,
+        "p95_ms": 9.3958,
+        "max_ms": 11.5674
+      },
+      "SUI": {
+        "count": 50,
+        "p50_ms": 7.862299999999999,
+        "p95_ms": 8.8926,
+        "max_ms": 10.5179
+      }
+    },
+    "four_asset_total": {
+      "count": 50,
+      "p50_ms": 31.572699999999998,
+      "p95_ms": 36.8539,
+      "max_ms": 37.897
+    },
+    "windows_process_memory": {
+      "before_model_load": {
+        "working_set_bytes": 22552576,
+        "peak_working_set_bytes": 22552576,
+        "private_bytes": 14036992
+      },
+      "after_model_load_and_warmup": {
+        "working_set_bytes": 60997632,
+        "peak_working_set_bytes": 60997632,
+        "private_bytes": 143360000
+      },
+      "after_benchmark": {
+        "working_set_bytes": 61042688,
+        "peak_working_set_bytes": 61042688,
+        "private_bytes": 143360000
+      },
+      "warm_working_set_delta_bytes": 38445056
+    },
+    "python": "3.12.14",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "measured_utc": "2026-09-28T10:34:57.175362+00:00"
+  },
+  "runtime_benchmark_source_sha256": "cbc763c94eaf04698239860a6de1cb5f809158ab06497f93226885c3cfc89748"
+}

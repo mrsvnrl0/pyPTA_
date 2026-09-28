@@ -1,0 +1,14 @@
+<section class="settings-card" id="deribit-settings" aria-labelledby="deribit-title">
+<h2 id="deribit-title">Deribit connection</h2>
+<p class="muted">Authenticate the options market requests used for GEX. Enter your client ID and client secret on this computer; saved credentials are protected for your Windows user and excluded from backups.</p>
+<p id="deribit-status" role="status" aria-live="polite">Checking connection status…</p>
+<p id="deribit-local-only" class="muted" hidden>Open this dashboard directly at its http://127.0.0.1 address on the dashboard computer to edit the connection.</p>
+<form id="deribit-form" action="/api/settings/deribit" autocomplete="off">
+<div class="settings-grid">
+<label>Client ID<input name="client_id" type="password" autocomplete="off" maxlength="4096" required spellcheck="false" disabled></label>
+<label>Client secret<input name="client_secret" type="password" autocomplete="new-password" maxlength="4096" required spellcheck="false" disabled></label>
+</div>
+<div class="form-actions"><button type="submit" disabled>Save connection</button><button id="deribit-public" type="button" class="secondary" data-url="/api/settings/deribit/public" disabled>Use public requests</button><button id="deribit-discard" type="button" class="secondary" disabled>Discard connection edits</button></div>
+</form>
+<p id="deribit-result" role="status" aria-live="polite"></p>
+</section>

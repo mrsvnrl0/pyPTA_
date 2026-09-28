@@ -1,0 +1,7 @@
+<nav class="dashboard-tabs" aria-label="Dashboard navigation">
+<a href="{{ url_for('dashboard') }}" {% if request.endpoint == 'dashboard' %}aria-current="page"{% endif %}>Home</a>
+<a href="{{ url_for('paper_page') }}" {% if request.endpoint == 'paper_page' %}aria-current="page"{% endif %}>Paper Trading</a>
+<a href="{{ url_for('positions_page') }}" {% if request.endpoint == 'positions_page' %}aria-current="page"{% endif %}>Positions</a>
+<a href="{{ url_for('trade_records_page') }}" {% if request.endpoint == 'trade_records_page' %}aria-current="page"{% endif %}>Trade Records</a>
+<a href="{{ url_for('settings_page') }}" {% if request.endpoint == 'settings_page' %}aria-current="page"{% endif %}>Settings</a>
+</nav>

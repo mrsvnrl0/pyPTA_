@@ -1,0 +1,29 @@
+{% if s.administration.settings_file %}
+<section class="strategy-controls settings-card" id="settings-database" aria-label="Strategy settings and database">
+<h3>Settings and database</h3>
+<p>Save edits in the form above, then apply them here. Existing paper trades and actual positions retain their recorded levels and costs. SMC criteria change the displayed market analysis. NN settings apply to the paper simulation.</p>
+<p class="muted">Settings file: <code>{{ s.administration.settings_file }}</code></p>
+<p class="muted">Backups keep one complete copy of settings and trading data in <code>backup/latest.zip</code>. Each new backup replaces the previous copy.</p>
+<p>For a fresh start, purge first, then apply settings. Purge backs up and clears all paper trades, pending orders, recorded holdings, buy watches and their history. Paper trading stays paused until you apply settings; market analysis continues. Paper cash then starts at the equity in your saved JSON.</p>
+<div class="strategy-control-actions">
+<form class="maintenance-form" method="post" action="{{ url_for('apply_strategy_settings') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<button type="submit">Apply saved settings</button>
+</form>
+<button type="button" class="danger-button" id="open-purge">Purge database…</button>
+</div>
+<p class="maintenance-result" role="status" aria-live="polite"></p>
+{% if s.administration.paused %}<p class="wait"><strong>Paper trading paused.</strong> Apply settings to resume.</p>{% endif %}
+{% if s.administration.last_result %}<p>{{ s.administration.last_result.message }}</p><p class="muted">Backup saved: <code>{{ s.administration.last_result.backup }}</code></p>{% endif %}
+<dialog id="purge-dialog" aria-labelledby="purge-title">
+<h3 id="purge-title">Clear all positions and history?</h3>
+<p>This saves a backup, then clears all paper trades and orders, recorded holdings, buy watches and their history. Monitoring will pause until you apply settings.</p>
+<form class="maintenance-form" method="post" action="{{ url_for('purge_strategy_database') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<input type="hidden" name="confirm" value="purge">
+<div class="strategy-control-actions"><button type="submit" class="danger-button">Back up and purge</button><button type="button" class="secondary" id="cancel-purge" autofocus>Cancel</button></div>
+</form>
+<p class="maintenance-result" role="status" aria-live="polite"></p>
+</dialog>
+</section>
+{% endif %}

@@ -1,0 +1,297 @@
+NN recorded-position exit lights — 15 September 2026
+.venv\Scripts\python.exe -B -m unittest test_position_pages test_nn_homepage test_neural_strategy.NeuralExecutionTests -q
+Ran 35 tests in 3.161s — OK.
+node --test test_nn_charts_ui.js — 5 passed, 0 failed.
+STOP LOSS / HOLD / TAKE PROFIT rendering, mirrored long/short predictions,
+target precedence, current quote/model requirements, missing targets, notification
+labels and deduplication, unchanged paper execution, and stale light expiry passed.
+Disposable state only; no production restart, state changes or external alerts.
+
+Single complete backup validation — 14 September 2026
+.venv\Scripts\python.exe -B -m unittest discover -s . -q
+Ran 529 tests in 25.748s — OK, no skips.
+Archive retention, settings and trading data, all SQLite namespaces, restored
+database integrity/provenance, committed WAL data, exact JSON source bytes,
+custom filenames, and failed-write/verification/replacement preservation passed.
+Maintenance backup CLI help and git diff --check passed.
+All state was disposable; no production backup, restart or data change.
+
+Neural strategy validation — 12 September 2026
+Runtime: .venv Python 3.12.14, SQLite 3.53.1; NumPy 2.5.3, pandas 2.3.3,
+TA-Lib 0.6.8, h5py 3.16.0.
+.venv\Scripts\python.exe -B -m unittest discover -s . -q
+Ran 496 tests in 22.587s — OK, no skips; includes 31 neural regressions.
+node --test test_gex_ui.js — 8 passed, 0 failed.
+JavaScript syntax, launcher/neural-tools help, git diff --check: passed.
+Reference comparison: 3 archived BTC feature rows, 36 columns, maximum absolute
+error 5.551115123125783e-16; independent H5 node sums versus converted NPZ
+probabilities: maximum absolute error 2.983717733995306e-7.
+Reproduced model import: checksum-verified Figshare version-2 archive,
+1,533,301 scaler rows / 407 training assets; model SHA-256
+8907c6f395dc8cf385619f1cace6e27c3b23a04a820fe980cde65898cad56c87.
+CLI backtest completed on 300 synthetic 4H candles using the real model;
+no model trades, dummy and buy/hold-with-stop baseline paths also completed.
+Synthetic results verify execution plumbing, not historical profitability.
+Disposable desktop and 390px browser preview: selection persisted, active trade,
+expired signal window and holdings rendered; no horizontal overflow or JS errors.
+Active production selection remains smc_video. Production dashboard/ledgers were
+not restarted or modified. No Telegram sends, paid AI requests or live scans.
+
+--- Previous verification records ---
+
+SQLite persistence validation — 11 September 2026
+Runtime: local .venv, Python 3.12.14, SQLite 3.53.1 (WAL-reset fix present).
+.venv\Scripts\python.exe -B -m unittest discover -s .
+Ran 431 tests in 15.836s — OK, no skips.
+Node: node --test test_gex_ui.js — 8 passed, 0 failed.
+Formula audit: qualification_audit/check_formulas.py — passed, offline.
+Launcher/maintenance help and PowerShell syntax: passed.
+git diff --check: passed.
+New coverage: 41 tests, including real SQLite failure injection, concurrent claims,
+process ownership, subprocess death before/after commit, corrupt saved state,
+atomic migration, provenance conflicts, backup/export and real-formula parity.
+Benchmark: seven repetitions per workload, 10/1,000/10,000 events; equal final
+business states. Single-event median original JSON / SQLite (milliseconds):
+10: 6.241 / 4.228; 1,000: 121.081 / 43.365; 10,000: 838.325 / 480.867.
+Single-event SQLite writes: 2 rows at every size. No-op SQLite writes: 0.
+Full measurements and limitations: docs/persistence_benchmark.json and
+ docs/SQLITE_PERSISTENCE.md. Physical disk writes were not measured.
+Production state/settings and the running dashboard were not modified.
+
+--- Previous verification records ---
+
+Verified 7 September 2026: GEX mapping and position alert refinements.
+python -B -m unittest discover -s .
+Ran 350 tests in 7.608s
+OK
+
+node --test test_gex_ui.js
+4 tests passed.
+
+13 new Python regressions cover duplicate option rows, signed wall distances,
+zone relationships, venue basis, stale/invalid/future evidence, delivery
+revalidation, formula changes, price refresh with retry preservation, candle
+expiry, target/HOLD precedence, review-only payloads, latest-alert selection,
+and invalid holding marks. Node tests exercise delayed refresh, evidence
+expiry, recovery, label separation, and alert expiry during paused reloads.
+Both JavaScript syntax checks and tracked-file whitespace checks pass.
+Disposable browser QA: GEX map/curve, long/short/review alerts, 390px viewport
+without horizontal overflow, and no JavaScript console errors.
+Temporary ledgers and synthetic data only; no Telegram or AI workers started.
+Production dashboard restart remains necessary to load the Python changes.
+
+Previous verification:
+Verified 7 September 2026: Telegram take-profit proximity alerts, project root.
+Selected range: 0.10% of target, paper trades and recorded holdings.
+python -B -m unittest discover -s . -q
+Ran 307 tests in 6.559s
+OK
+
+19 new tests cover mirrored price boundaries, fresh bid/ask use, clock/feed
+failures, no pending/closed-trade warnings, cancellation, delivery expiry,
+atomic rollback, notification-only settings migration, saved holding targets,
+target reach chronology, restart, damaged metadata, runtime/HTML integration
+and mocked Telegram acknowledgement/rate-limit retry behavior.
+node --check adaptive_crypto/static/dashboard.js passed.
+Verification used disposable ledgers and sent no Telegram or AI requests.
+
+Activation: the verified localhost dashboard was restarted with its existing
+settings and credentials after backing up the ledgers. Live API and HTML confirm
+the 0.10% range, both recorded BTC holdings have saved targets, and the first
+qualifying holding warning received a successful Telegram acknowledgement.
+git diff --check passed.
+
+Previous verification:
+Verified 7 September 2026: liquidity-sweep take-profit update, project root.
+Engine: smc-video-v1; default take-profit extension 1 bp (0.01%).
+python -B -m unittest discover -s . -q
+Ran 288 tests in 5.922s
+OK
+
+Includes 10 new sweep-target regressions: mirrored formula/unit evidence,
+configuration validation, raw-liquidity retirement and pending cancellation,
+same-bar ambiguity, quote and completed-wick exits, fee-adjusted P/L,
+restart deduplication, settings-change preservation, older filled targets and
+damaged-record rejection. Existing HTML integration checks also pass.
+Standalone legacy qualification audit and git diff --check passed.
+Disposable ledgers only; no Telegram or AI requests sent by verification.
+
+Previous verification:
+Verified 7 September 2026: SMC video adaptation, installed project root.
+Engine: smc-video-v1; selected settings 30M/5M, both methods, swing stop + 1 bp.
+python -B -m unittest discover -s . -q
+Ran 278 tests in 5.136s
+OK
+
+Includes 39 formula, 39 order/accounting and 12 integration regressions, alongside
+the prior 188 tests. Legacy qualification audit and git diff --check passed.
+Disposable offline browser preview verified both sides' limits, active levels,
+sweep measurements, holding alerts, open/close forms and P/L; no JS console errors.
+Public Kraken --once scan used an isolated ledger: BTC, ETH and SOL had valid
+30M/5M feeds and no new qualifying entries. This is not profitability validation.
+Active settings updated with the prior configuration backed up. Production paper
+and holding ledgers were not opened by verification. No Telegram or AI calls sent.
+
+Previous verification:
+Verified 7 September 2026, installed project root.
+python -B -m unittest discover -s .
+Ran 188 tests in 3.386s
+OK
+
+Includes 27 new manual-position lifecycle, momentum, persistence and HTTP regressions.
+Standalone qualification audit passed; git diff --check passed.
+Disposable offline browser preview: open/close forms, P/L, closed history, alert
+details and dirty-form refresh handling verified; no JavaScript console errors.
+No real holding, live ledger or settings were changed; no external alerts or AI calls.
+
+Previous verification:
+..........................................................................................................................................
+----------------------------------------------------------------------
+Ran 138 tests in 1.916s
+
+OK
+
+Verified 6 September 2026, installed project root.
+Engine: kraken-closed-bar-v9.3
+138 tests: original 117 plus 21 review and package/upgrade regressions.
+All HTTP requests were blocked during the offline suite.
+Both launcher forms passed --help; isolated --once exercised with a fake market-data provider.
+No saved runtime ledger, external messages, paid AI calls, or background dashboard were used.
+
+2026-09-09 SHORT buy watches and bearish-source spot paper entries
+python -B -m unittest discover -s .: 368 tests passed.
+node --test test_gex_ui.js: 4 tests passed.
+New coverage: exact lower ask trigger; reference is not a purchase; independent watches; stale/clock/first-observation handling; restart, expiry, retry and duplicate protection; CSRF and idempotent forms; automatic low sweep target; lower paper buy then long SELL exit; source invalidation, future candle fills and damaged-state rejection.
+
+
+2026-09-20 — Independent market dashboard, NN simulation and manual position guidance
+- Python regression suite: 547 tests passed (unittest discover -q, 25.574 seconds).
+- Browser-script regressions: 14 tests passed (GEX/chart freshness and signal expiry).
+- Headless Chrome: Home, Positions, Paper Trading and Settings rendered at 1280px and 390px without horizontal page overflow or JavaScript errors.
+- Verified suggested-stop button fills the editable field and Add Position opens with the stop input.
+- New regression coverage verifies independent NN/TP1/TP2 decisions; long/short adverse NN exits; stale-data waiting states; fixed saved targets; missing-GEX retry without false TP2 fallback; stop validation/CSRF; distinct target alerts; preservation of manual records; and continued market analysis while paper trading is paused.
+- Source dashboard restarted successfully in C:\Users\CxN\Documents\ChatGPT\pyPTA.
+- Running strategy: neural_network. Home, Paper Trading, Positions, Settings and Trade Records returned HTTP 200.
+- All seven manual records preserved across activation; no position calculation errors.
+- Complete backup verified at backup/latest.zip (legacy, SMC, neural and positions namespaces).
+- Current installer artifacts were not rebuilt in this change.
+
+2026-09-20 — Independent 4H protected structure
+- Full Python suite: 570 tests passed.
+- JavaScript suite: 15 tests passed, including stale 4H display handling.
+- New regressions cover strict 2/2 confirmation, delayed pivot visibility, user example 100/95/102, protected levels surviving minor swings and rolling history, wick/equality exclusion, long/short symmetry, stale/forming/gapped feeds, position entry/alert enable timestamps, restart deduplication, mock delivery and expiry, SQLite persistence, runtime feed isolation and page rendering.
+- Live Home and Positions checked at 1280, 762 and 390 px: no horizontal overflow or browser errors. Six qualification disclosures retained; three 4H context panels present.
+- Activated after verified backup/latest.zip containing all four state namespaces. All 8 manual records (1 open) preserved exactly in core trade fields and preferences; no startup structure alerts generated. No test Telegram messages sent.
+
+2026-09-22 — Neural network signal audit
+- Full Python suite: 599 tests passed in 28.319 seconds (29 new regressions).
+- JavaScript suite: 15 tests passed.
+- Confirmed and fixed: independently loaded model mismatch; advisory-feed delay consuming NN execution window; lost NN exit alerts during temporary quote/model outages; incorrect intrabar stop timestamps in offline reports.
+- Neural feature/class/scaler/inference reference and causal-prefix tests pass.
+- Detailed scope and evidence: docs/NN_AUDIT_2026-09-22.md.
+
+2026-09-25 — Live refresh, feed diagnostics, guided restore and source baseline
+- Python suite: 642 tests run, 641 passed, one Windows symlink-permission test skipped (32.391 seconds).
+- JavaScript and Chromium browser regression suites: 29 passed, no skips (Playwright 1.62.1, installed Chrome).
+- Offline browser integration: all five pages at 1280px and 390px returned HTTP 200 without page overflow or JavaScript errors. Chart/GEX DOM identities and disclosures persisted over multiple scans without a document navigation.
+- Disposable SQLite restore: preview/cancel, extra manual position, complete restore, preserved settings, correct position count, rollback/recovery and post-restore alert suppression verified.
+- Live activation: coordinated scan/delivery drain then new source process in C:\Users\CxN\Documents\ChatGPT\pyPTA. Eight manual records, two paper trade entries and settings preserved; no runtime/position errors.
+- New /api/feeds returned 200. All main pages returned 200. Current backup/latest.zip preview verified all four namespaces without restoring live data.
+- Pre-activation recovery copy: .qa/backup/latest.zip. Existing backup/latest.zip was preserved. No test external notifications sent.
+- Existing Windows installers were not rebuilt. Guided restore explicitly requires complete compatible SQLite backups. Git staging was preserved.
+- Final archive: 164 allowlisted source files; ZIP regenerated byte-for-byte identically, every file hash verified, and extracted source passed all 642 Python tests (one Windows symlink-permission skip). SHA256 b16918b8225a6f3ee29f895d43868914c8ccb8d7795a30f71511e8c9f0cba2b4.
+- Live Chrome 153.0.8010.53 verification: all five pages loaded without JavaScript errors; all twelve feed rows were Current at the check.
+
+Deribit authentication implementation and activation - 25 September 2026
+Python full suite: 675 run, 674 passed, 1 Windows symlink permission skip.
+35 JavaScript/browser regressions passed, including 6 credential-form checks.
+The full suite ran outside the sandbox to test actual Windows DPAPI with
+synthetic credentials in a disposable directory. All authentication tests mocked.
+Live Deribit public JSON-RPC smoke succeeded. After the user saved credentials
+in the local form, Deribit authentication succeeded and BTC, ETH and SOL GEX
+feeds all reported ready with fresh success timestamps and no connection errors.
+All five live pages returned 200; desktop/mobile form has no horizontal overflow
+or JavaScript errors. All 12 feed rows were current after activation.
+Complete four-namespace recovery archive: .qa/deribit-recovery/backup/latest.zip.
+Saved settings and recorded-trade fields matched before/after activation;
+current study has 1 manual position and 1 NN paper trade. Live NN guidance price
+and observation/expiry timestamps refreshed as expected and were excluded from
+record comparison. Earlier verification counts are historical, not this snapshot.
+Fresh source baseline contains 171 files and excludes local credential storage.
+Archive SHA-256: 980bba35e370917dbfb7817613b29fa8622d153aa4c44f9deba8696cde601ec9.
+Existing installers and Git staging were not changed.
+
+AI provider and Telegram connection settings - 26 September 2026
+Python full suite: 699 run, 698 passed, 1 Windows symlink permission skip.
+41 JavaScript/browser regressions passed, including 6 new connection-form checks.
+Actual Windows DPAPI tested with synthetic disposable credentials outside the
+sandbox. Provider network tests mocked, including Gemini generation, rejection,
+credential isolation, secret-safe failures and Telegram uncertain delivery.
+After the full run, 17 focused provider/AI status checks passed for canonical
+model-ID acceptance. The OpenAI SDK is no longer needed for commentary.
+All five live pages returned 200. Both connection forms passed desktop/mobile
+rendering, overflow, blank-password and JavaScript-error checks.
+Existing OpenAI and Telegram settings migrated into Windows-user encrypted
+storage. Live read-only checks verified the selected OpenAI model and Telegram
+bot/chat. No AI content generated or test Telegram message sent. Gemini awaits
+a user-supplied key/model and has not been verified against a live account.
+Deribit authentication remained healthy after activation.
+Complete pre-activation recovery: .qa/connections-recovery/backup/latest.zip.
+All four namespaces verified. Settings, three manual records and one NN paper
+trade retained their stable fingerprints. Live NN mark/time guidance and the
+recomputed suggested_stop are excluded; accepted stop_price and recorded trade
+fields remain in the comparison. The only additional observed change was a
+suggested-stop refresh, generated from current candles by position_guidance.py.
+The NN simulation still queues Telegram alerts only; provider selection configures
+the existing optional AI commentary path without adding generation events.
+Fresh source baseline: 179 files; runtime credentials excluded.
+Archive SHA-256: 5f9327507ae7a9ada8408efa200f53cb2535931b8737e8518c7c0f078d0e5de1.
+Existing Windows installers and Git staging were not changed.
+
+Home crypto market pulse - 26 September 2026
+Python full suite: 718 run, 717 passed, one Windows symlink permission skip
+(39.347 seconds). All 47 JavaScript/browser regressions passed.
+New coverage: required OpenAI search and citations, Gemini grounding/UTF-8
+citation offsets, secret-safe provider errors, no provider fallback, public-only
+fresh price context and dated baselines, 15-minute scheduling, single-flight
+requests, one-minute manual cooldown, restart charge suppression, stale/error
+states, provider changes, late-result discard, CSRF/local controls, hostile
+returned markup and preservation through the normal market-page refresh.
+Offline preview inspected at 1920px and 390px. Browser layout checks at 1920,
+1280, 762 and 390px: no overflow; citations remain keyboard accessible.
+Activated the source dashboard after complete four-namespace backup at
+.qa/market-brief-recovery/backup/latest.zip. Stable fingerprints for settings,
+four manual records and one NN paper trade match. Live guidance can refresh.
+All five live pages returned 200 without JavaScript errors. Market runtime
+has no reported errors; Deribit remains authenticated.
+Live selected provider: Gemini, gemini-3.8-flash. The first research request
+returned HTTP 429 (quota/rate limit); the panel displays this failure and
+retains the 15-minute retry schedule. A live sourced brief is not yet verified.
+No provider was silently substituted; no test Telegram messages were sent.
+Source archive: 186 allowlisted files, including the new worker/UI/tests.
+SHA-256: 6a105ac90a2caad3e02c78caca7bf8355bb5ab801262bb391b7fe61c88c67916.
+Existing Windows installers and Git staging were not changed.
+
+Selectable NN limitations checkbox - 27 September 2026
+Python full suite: 749 run, 748 passed, one Windows symlink permission skip
+(41.262 seconds). All 50 JavaScript/browser regressions passed.
+31 new Python tests cover JSON/SQLite multi-position persistence, default ON,
+OFF cash/fee sizing without risk/allocation/spread/minimum caps or new stops,
+same-candle/restart deduplication, existing stop preservation, SELL closing all
+lots, mixed stop/SELL exits, rollback/outbox accounting and strict validation.
+Runtime tests confirm OFF avoids 5M stop-feed waits unless existing trades
+need their recorded stops. Valid quotes, timing, clock and model requirements
+remain enforced. Three real browser tests cover checkbox boolean submission,
+saved/reset baseline and failed-save recovery.
+Offline preview verified Save then Apply in both directions without touching
+live settings. Settings and Paper Trading at 1280px/390px had no overflow or
+JavaScript errors. Live Settings also verified at both sizes.
+Complete pre-activation recovery: .qa/nn-limitations-recovery/backup/latest.zip.
+Archive hashes and legacy/smc/neural/positions namespaces verified.
+After coordinated source activation, settings and stable record fingerprints
+match: four manual records and one NN paper trade. All five live pages returned
+200 without JavaScript errors. NN limitations remains ON; no live mode toggle.
+Source baseline: 188 files; rebuilt archive matches current allowlisted source
+byte-for-byte, with runtime data/credentials excluded.
+SHA-256: a59f7d43958a8cfd73029e0ba32d27794da92c163fff06a08ac320a30082fc69.
+Existing Windows installers and Git staging were not changed.

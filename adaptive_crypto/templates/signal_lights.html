@@ -1,0 +1,12 @@
+{% macro signal_lights(selected, label, probabilities=none, states=['BUY', 'HOLD', 'SELL'], names=none) -%}
+<div class="signal-lights" role="group" aria-label="{{ label }}">
+  {% for state in states %}
+  {% set chosen = selected == state %}
+  <button type="button" class="signal-light signal-{{ state|lower|replace(' ', '-') }}{{ ' is-selected' if chosen else '' }}" disabled aria-pressed="{{ 'true' if chosen else 'false' }}" title="{{ label }} · display only">
+    <span class="signal-light-name"><span class="signal-lamp" aria-hidden="true"></span>{{ names.get(state,state) if names else state }}</span>
+    {% if probabilities is not none %}<span class="signal-probability">{{ num(probabilities[state]*100,2) ~ '%' if probabilities.get(state) is not none else '—' }}</span>{% endif %}
+    <span class="signal-selection">{{ 'Selected' if chosen else 'Inactive' }}</span>
+  </button>
+  {% endfor %}
+</div>
+{%- endmacro %}

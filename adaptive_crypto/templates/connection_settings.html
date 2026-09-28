@@ -1,0 +1,31 @@
+<section class="settings-card" id="ai-connection" aria-labelledby="ai-connection-title">
+<h2 id="ai-connection-title">AI commentary</h2>
+<p class="muted">Choose the provider for the Home market summary and optional signal commentary. The market summary researches news and public posts every 15 minutes and uses your provider's paid generation and search quota. Select a text model supporting web search. Each provider keeps its own key and model.</p>
+<p data-connection-status="ai" role="status" aria-live="polite">Loading AI connection…</p>
+<p data-connection-local class="muted" hidden>Open Settings at this computer's http://127.0.0.1 dashboard address to manage connections.</p>
+<form data-connection="ai" action="/api/settings/connections/ai" autocomplete="off">
+<div class="settings-grid">
+<label>AI provider<select name="provider" disabled><option value="openai">OpenAI</option><option value="gemini">Google Gemini</option></select></label>
+<label>Model ID<input name="model" type="text" autocomplete="off" spellcheck="false" maxlength="200" required aria-describedby="ai-model-help" disabled></label>
+<label>API key<input name="api_key" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="ai-key-help" disabled></label>
+</div>
+<p id="ai-model-help" class="muted">Enter a text model ID available in your provider account. <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noopener noreferrer">OpenAI models</a> · <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noopener noreferrer">Gemini models</a></p>
+<p id="ai-key-help" class="muted">Keys are encrypted for your Windows user and excluded from backups. Saved keys are never shown here.</p>
+<div class="form-actions"><button type="submit" disabled>Save AI connection</button><button type="button" class="secondary" data-connection-action="check" disabled>Check credentials</button><button type="button" class="secondary" data-connection-action="disable" disabled>Disable AI</button><button type="button" class="secondary" data-connection-action="discard" disabled>Discard AI edits</button></div>
+<p class="muted">Checking credentials retrieves model information. It does not generate commentary or verify generation quota.</p>
+<p data-connection-result role="status" aria-live="polite"></p>
+</form></section>
+<section class="settings-card" id="telegram-connection" aria-labelledby="telegram-connection-title">
+<h2 id="telegram-connection-title">Telegram alerts</h2>
+<p class="muted">Use a bot token and chat ID for alert delivery. Changes take effect after any current delivery finishes.</p>
+<p data-connection-status="telegram" role="status" aria-live="polite">Loading Telegram connection…</p>
+<form data-connection="telegram" action="/api/settings/connections/telegram" autocomplete="off">
+<div class="settings-grid">
+<label>Bot token<input name="bot_token" type="password" autocomplete="new-password" spellcheck="false" maxlength="4096" aria-describedby="telegram-key-help" disabled></label>
+<label>Chat ID<input name="chat_id" type="password" autocomplete="off" spellcheck="false" maxlength="200" aria-describedby="telegram-key-help" disabled></label>
+</div>
+<p id="telegram-key-help" class="muted">Credentials are encrypted for your Windows user and excluded from backups. Leave a field blank to keep its existing value.</p>
+<div class="form-actions"><button type="submit" disabled>Save Telegram connection</button><button type="button" class="secondary" data-connection-action="check" disabled>Check credentials</button><button type="button" class="secondary" data-connection-action="disable" disabled>Disable Telegram</button><button type="button" class="secondary" data-connection-action="discard" disabled>Discard Telegram edits</button></div>
+<p class="muted">Checking verifies the bot and destination chat without sending a message.</p>
+<p data-connection-result role="status" aria-live="polite"></p>
+</form></section>

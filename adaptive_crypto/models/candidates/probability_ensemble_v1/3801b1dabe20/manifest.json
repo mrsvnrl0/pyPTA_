@@ -1,0 +1,209 @@
+{
+  "artifact_id": "3801b1dabe200b4c4b24182f9b566ecb0aedb45ad505bf93b38b47e8ebd26795",
+  "classes": [
+    "BUY",
+    "HOLD",
+    "SELL"
+  ],
+  "components": [
+    {
+      "artifact_id": "4033451e932946bc33c26b517a07bf5a71a2d81ac2227c6b5f4df6476a61ac6d",
+      "manifest_sha256": "7b73c57084c33487c3dffa48b8120c5a2de88236b78fe4bc59d450d67e34a4d8",
+      "model_id": "lstm_classifier_v1@4033451e9329"
+    },
+    {
+      "artifact_id": "1f83df264a1e1d24516aeae8554ea3dcf6d93ab174579ab995a3c883e45b6f28",
+      "manifest_sha256": "7cb2ae82f42f297ae7c03617758ac418c52856e6c3b1a255ddb4527d21aa34e1",
+      "model_id": "gru_classifier_v1@1f83df264a1e"
+    },
+    {
+      "artifact_id": "79f9860590ebf3a6269a6287189201b22c31e6874a9c9953a1c9a85419fb94b5",
+      "manifest_sha256": "d2bd3f3702279bf0e9e8ca28e415ccd6a672f501081170cf3ac56e15c790c46a",
+      "model_id": "cnn_lstm_classifier_v1@79f9860590eb"
+    },
+    {
+      "artifact_id": "2e29d734b5b6ed56a76d61685de4d60fa55aac18e712b5064ca20a8342b72443",
+      "manifest_sha256": "b0e65f1e55401b5e4f10df9c0c28b022d3b7118d258e61fe8d304d2150b25521",
+      "model_id": "grouped_attention_lstm_v1@2e29d734b5b6"
+    }
+  ],
+  "coverage": [
+    "BTC",
+    "ETH",
+    "SOL",
+    "SUI"
+  ],
+  "dataset_provenance_sha256": "266ad1040cf8e1a9e36ff80f35486b61e5a611ef3b4e5267d475ba38ad9ef332",
+  "display_name": "Fixed equal-weight probability ensemble",
+  "experiment_sha256": "00d1c373f8308e524e73b66f799fce495642dd04a95a44adbe390d51105fd1d8",
+  "feature_groups": [
+    {
+      "end": 6,
+      "start": 0
+    },
+    {
+      "end": 13,
+      "start": 6
+    },
+    {
+      "end": 16,
+      "start": 13
+    }
+  ],
+  "feature_names": [
+    "log_close_return_1",
+    "log_open_prev_close",
+    "log_high_prev_close",
+    "log_low_prev_close",
+    "log_close_open",
+    "range_over_close",
+    "log_close_return_3",
+    "log_close_return_6",
+    "log_close_return_12",
+    "log_close_return_24",
+    "log_close_sma24",
+    "rsi14_centered",
+    "log_return_std24",
+    "log1p_volume",
+    "log_volume_sma24_ratio",
+    "log1p_volume_change"
+  ],
+  "feature_schema": "kraken-ohlcv-16-v1",
+  "feature_sequence_rows": 64,
+  "history_bars": 319,
+  "id": "probability_ensemble_v1",
+  "identity_payload": {
+    "architecture_id": "probability_ensemble_v1",
+    "classes": [
+      "BUY",
+      "HOLD",
+      "SELL"
+    ],
+    "components": [
+      {
+        "artifact_id": "4033451e932946bc33c26b517a07bf5a71a2d81ac2227c6b5f4df6476a61ac6d",
+        "manifest_sha256": "7b73c57084c33487c3dffa48b8120c5a2de88236b78fe4bc59d450d67e34a4d8",
+        "model_id": "lstm_classifier_v1@4033451e9329"
+      },
+      {
+        "artifact_id": "1f83df264a1e1d24516aeae8554ea3dcf6d93ab174579ab995a3c883e45b6f28",
+        "manifest_sha256": "7cb2ae82f42f297ae7c03617758ac418c52856e6c3b1a255ddb4527d21aa34e1",
+        "model_id": "gru_classifier_v1@1f83df264a1e"
+      },
+      {
+        "artifact_id": "79f9860590ebf3a6269a6287189201b22c31e6874a9c9953a1c9a85419fb94b5",
+        "manifest_sha256": "d2bd3f3702279bf0e9e8ca28e415ccd6a672f501081170cf3ac56e15c790c46a",
+        "model_id": "cnn_lstm_classifier_v1@79f9860590eb"
+      },
+      {
+        "artifact_id": "2e29d734b5b6ed56a76d61685de4d60fa55aac18e712b5064ca20a8342b72443",
+        "manifest_sha256": "b0e65f1e55401b5e4f10df9c0c28b022d3b7118d258e61fe8d304d2150b25521",
+        "model_id": "grouped_attention_lstm_v1@2e29d734b5b6"
+      }
+    ],
+    "coverage": [
+      "BTC",
+      "ETH",
+      "SOL",
+      "SUI"
+    ],
+    "feature_schema": "kraken-ohlcv-16-v1",
+    "history_bars": 319,
+    "label_version": "parente-source-5-2-v1",
+    "latest_model_selection_through_ms": 1790539199999,
+    "schema": "fixed-probability-ensemble-v1",
+    "target_horizon_bars": 2,
+    "timeframe_ms": 14400000,
+    "weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "inference_runtime": {
+    "execution_provider": "CPUExecutionProvider",
+    "name": "onnxruntime",
+    "opset": 17,
+    "version_validated": "1.30.0"
+  },
+  "input_shape": [
+    1,
+    64,
+    16
+  ],
+  "label_version": "parente-source-5-2-v1",
+  "latest_model_selection_through_ms": 1790539199999,
+  "missing_data_policy": "unavailable; no fill or interpolation",
+  "output_shape": [
+    1,
+    3
+  ],
+  "raw_feature_context_bars": 256,
+  "report": "report.json",
+  "report_sha256": "fd89012e42fdd9cc1896e418e2fc5a366d278083cce80a9952db240869edafbe",
+  "schema": 1,
+  "splits": {
+    "aligned_history_start_ms": 1683115200000,
+    "test_end_ms": 1790539200000,
+    "test_start_ms": 1769054400000,
+    "validation_start_ms": 1758312000000
+  },
+  "target_horizon_bars": 2,
+  "timeframe_ms": 14400000,
+  "training_dependencies": {
+    "components": [
+      {
+        "numpy": "2.5.3",
+        "onnx": "1.23.0",
+        "onnxruntime": "1.30.0",
+        "python": "3.12.14",
+        "torch": "2.14.0+cpu"
+      },
+      {
+        "numpy": "2.5.3",
+        "onnx": "1.23.0",
+        "onnxruntime": "1.30.0",
+        "python": "3.12.14",
+        "torch": "2.14.0+cpu"
+      },
+      {
+        "numpy": "2.5.3",
+        "onnx": "1.23.0",
+        "onnxruntime": "1.30.0",
+        "python": "3.12.14",
+        "torch": "2.14.0+cpu"
+      },
+      {
+        "numpy": "2.5.3",
+        "onnx": "1.23.0",
+        "onnxruntime": "1.30.0",
+        "python": "3.12.14",
+        "torch": "2.14.0+cpu"
+      }
+    ]
+  },
+  "training_hyperparameters": {
+    "member_selection": "four predeclared candidate architectures; no test-set tuning",
+    "members": [
+      "lstm_classifier_v1",
+      "gru_classifier_v1",
+      "cnn_lstm_classifier_v1",
+      "grouped_attention_lstm_v1"
+    ],
+    "probability_weights": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ]
+  },
+  "volume_epsilon": 1e-12,
+  "volume_units": "Kraken base asset units",
+  "weights": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ]
+}

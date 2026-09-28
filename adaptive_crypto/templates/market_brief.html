@@ -1,0 +1,9 @@
+<section id="market-brief" class="market-brief" aria-labelledby="market-brief-title" data-csrf="{{ csrf_token }}">
+<div class="brief-heading"><h2 id="market-brief-title">Crypto market pulse</h2><span class="brief-badge">AI · news &amp; public posts</span></div>
+<p class="brief-status muted" data-brief-status role="status">Loading market summary…</p>
+<div class="brief-copy" data-brief-copy></div>
+<div data-brief-search hidden></div>
+<div class="brief-footer"><span data-brief-time class="muted">Updates every 15 minutes</span><div><button type="button" class="secondary brief-refresh" data-brief-refresh disabled>Refresh summary</button><a href="{{ url_for('settings_page') }}#ai-connection">AI settings</a></div></div>
+<p class="brief-coverage muted">Public posts found through web search; coverage may be delayed or incomplete.</p>
+<noscript>Enable JavaScript to load the market summary.</noscript>
+</section>

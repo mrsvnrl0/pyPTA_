@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paper Trading · pyPTA</title><link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}"></head>
+<body data-refresh="{{ refresh }}" data-generation="{{ generation }}"><main>
+{% from 'target_selection.html' import target_selection with context %}
+{% from 'signal_lights.html' import signal_lights with context %}
+{% set nn_model = s.neural_model or {} %}
+{% set nn_arch = nn_model.get('architecture_id') or ('parente_mlp_v1' if nn_model.get('features') else 'unavailable') %}
+{% set nn_name = nn_model.get('display_name') or nn_model.get('label') or ('Parente 5/2' if nn_arch == 'parente_mlp_v1' else s.rules.get('nn_model_id', 'Neural model')) %}
+<header><div><div class="eyebrow">Kraken market data · completed 4H candles</div><h1>Paper Trading · NN simulation</h1><p class="muted">{{ nn_name }} · BUY enters spot · HOLD waits · SELL exits</p></div><div class="muted">Last scan {{ time(s.updated_ms) }}<br>Telegram: {{ 'configured' if s.telegram_configured else 'not configured' }}</div></header>
+{% include 'navigation.html' %}
+
+{% if s.error %}<p class="notice dangerbox">{{ s.error }}</p>{% endif %}
+{% for warning in s.state.warnings %}<div class="notice dismissible-notice" data-warning-id="{{ s.engine }}:{{ loop.index0 }}:{{ warning }}"><span class="notice-message">{{ warning }}</span><button type="button" class="notice-dismiss" aria-label="Dismiss warning" title="Dismiss warning" hidden><span aria-hidden="true">&times;</span></button></div>{% endfor %}
+<details class="notice" data-panel="neural:method"><summary>Model and execution settings</summary>
+{% if nn_arch == 'parente_mlp_v1' %}<p>Parente 5/2: 36 inputs → 128 → 64 → 32 → 3 outputs. This is the authors' published 5/2 model, calibrated through {{ time(nn_model.trained_through_ms) if nn_model.get('trained_through_ms') else 'unavailable' }}.</p>
+{% elif nn_model %}<p>{{ nn_name }}: a trained three-class classifier on completed 4H market data{% if nn_model.get('lookback') %}, using {{ nn_model.lookback }} feature rows{% endif %}. Weights trained through {{ time(nn_model.trained_through_ms) if nn_model.get('trained_through_ms') else 'not reported' }}; live signals eligible after {{ time(nn_model.live_eligibility_after_ms) if nn_model.get('live_eligibility_after_ms') else 'not reported' }}.</p>
+{% else %}<p>The selected model is unavailable. See the scan error and <a href="{{ url_for('settings_page') }}#nn-model-title">model selection in Settings</a>.</p>{% endif %}
+<p>The largest class probability selects BUY, HOLD or SELL. Classifier probabilities do not measure the chance of a profit.</p>
+{% if s.rules.nn_limitations %}<p>One spot position per asset. New trades have a stop {{ num(s.rules.nn_stop_loss*100,2) }}% below entry. HOLD and repeated BUY retain existing positions. Cash, allocation, equity-floor, risk, spread and minimum-order limits apply.</p>
+{% else %}<p>Each new 4H BUY uses all available paper cash, including the entry fee. There is no position-count, risk, allocation, equity-floor, spread or minimum-order cap and no automatic stop on new trades. The first eligible BUY can use the whole balance; later entries need available cash. HOLD retains open positions.</p>{% endif %}
+<p>SELL closes all open positions for that asset. There is no fixed take-profit. An entry or classifier exit needs a fresh quote within {{ s.rules.nn_signal_max_age_seconds }} seconds of the 4H close. Historical signals are not backfilled, and the same candle cannot trade twice. Existing recorded stops continue between signals regardless of the checkbox.</p>
+<p>Fees {{ num(s.rules.fee_rate*100,2) }}% per side; slippage {{ num(s.rules.slippage_rate*100,2) }}% per side. Recorded trades keep their costs and stop policy after settings changes.</p>
+{% if nn_arch == 'parente_mlp_v1' %}<p class="muted">Training used historical Binance/USDT data. Live Kraken/USD and frozen Binance volume calibration are a venue and currency transfer. These paper results do not reproduce the paper's reported returns. <a href="https://doi.org/10.1016/j.eswa.2023.121806">Research paper</a> · <a href="https://figshare.com/articles/code/CryptoTrading_zip/22953377/2">Authors' model and source</a>.</p>
+{% elif nn_model %}<p class="muted">Candidate training coverage, provenance and measured validation are available through <a href="{{ url_for('settings_page') }}#nn-model-title">NN model Settings</a>. Unsupported assets show a model-unavailable status.</p>{% endif %}
+</details>
+<p class="notice" data-applied-nn-model="{{ nn_model.get('artifact_id', nn_model.get('model_id', '')) }}">Applied NN model: <strong>{{ nn_name }}</strong> · <a href="{{ url_for('settings_page') }}#nn-model-title">View model and validation</a></p>
+<p class="notice">NN limitations: <strong>{{ 'ON' if s.rules.nn_limitations else 'OFF · available cash only' }}</strong> · <a href="{{ url_for('settings_page') }}#nn-limitations">Change in Settings</a></p>
+
+<div class="assets neural-assets">
+{% for name, cfg in assets.items() %}{% set row=s.data.get(name,{}) %}{% set nn=row.get('neural',{}) %}
+<article class="asset" data-refresh-key="asset:{{ name }}">
+<div class="asset-head">
+  <div><h2>{{ name }}</h2><small>{{ cfg.symbol }}</small></div>
+  <div class="mini-chart" data-asset="{{ name }}" data-digits="{{ digits[name] }}"><canvas role="img" aria-label="{{ name }} live 4H candlestick chart">Live candle chart requires JavaScript.</canvas><div class="chart-meta">4H candles · <span class="chart-state">Loading…</span></div></div>
+  {% set quote=row.get('quote') or {} %}{% set has_price=quote.get('last') is not none %}
+  <div class="right live-quote" data-live-price data-asof="{{ quote.get('asof_ms','') if has_price else '' }}"><div class="quote" data-price-value>{{ money(quote.get('last'),digits[name]) }}</div><small data-price-status>{{ 'Live price · USD' if has_price and -2000 <= now-quote.get('asof_ms',0) <= 45000 else 'Last price · USD' if has_price else 'Waiting for price' }}</small></div>
+</div>
+{% if row.asof_ms and now-row.asof_ms > 45000 %}<p class="notice dangerbox">STALE VIEW · {{ time(row.asof_ms) }}</p>{% endif %}
+{% if row.scan_error %}<p class="danger">{{ row.scan_error }}</p>{% endif %}
+<p class="signal-context"><span class="signal-badge signal-badge-{{ 'buy' if nn.get('trade') else 'sell' if nn.error else 'hold' }}"><span class="signal-lamp" aria-hidden="true"></span>{{ nn.get('status','WAITING FOR SCAN') }}</span></p>
+{% if nn.error %}<p class="danger">{{ nn.error }}</p>{% endif %}
+{% for feed, error in row.get('errors',{}).items() %}<p class="danger">{{ feed }}: {{ error }}</p>{% endfor %}
+<div class="signal-heading"><h3>NN signal</h3><small>{{ 'Candle closed ' ~ time(nn.signal.signal_end) if nn.signal else 'Waiting for classification' }}</small></div>
+{{ signal_lights(nn.signal.label if nn.signal else none, name ~ ' neural network signal', nn.signal.probabilities if nn.signal else {}) }}
+{% if nn.signal %}
+<p class="muted" data-neural-expires="{{ nn.signal.signal_end+s.rules.nn_signal_max_age_seconds*1000 }}">{{ 'Execution window elapsed; showing last classification.' if now-nn.signal.signal_end > s.rules.nn_signal_max_age_seconds*1000 else 'Execution window open for this classification.' }}</p>
+<details data-panel="{{ name }}:neural-features"><summary>{{ nn.signal.features|length }} input measurements{% if nn_model.get('lookback') %} · {{ nn_model.lookback }}-row lookback{% endif %}</summary><dl>{% for label, value in nn.signal.features.items() %}<dt>{{ label }}</dt><dd>{{ measure(value) }}</dd>{% endfor %}</dl><p class="muted">Model {{ nn.signal.model_id[:16] }}</p></details>{% endif %}
+{% if nn.result %}<p>{{ nn.result }}</p>{% endif %}
+{% with gex_view='nn' %}{% include 'gex.html' %}{% endwith %}
+</article>{% endfor %}</div>
+{% include 'live_paper.html' %}
+<p class="footer">{{ s.engine }} · Paper observations only; no exchange orders. <a href="/api/state">Timestamped JSON measurements</a></p>
+{% include 'page_footer.html' %}
+<p id="refresh-status" class="muted" role="status"></p>
+</main><script src="{{ url_for('static',filename='live_refresh.js') }}" defer></script><script src="{{ url_for('static',filename='dashboard.js') }}" defer></script><script src="{{ url_for('static',filename='gex.js') }}" defer></script></body></html>

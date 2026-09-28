@@ -1,0 +1,3 @@
+NSIS is distributed under its own open-source license. The installer compiler
+is a build-time tool and is not installed on the target computer. See the
+included NSIS distribution and https://nsis.sourceforge.io/ for its license.

@@ -1,0 +1,21 @@
+{% set structure=row.get('structure') or {} %}{% set current=not structure.get('error') and structure.get('expires_ms',0)>now %}
+<section class="structure-context" data-structure-expires="{{ structure.get('expires_ms',0) }}" aria-label="{{ name }} 4H swing structure">
+<div class="signal-heading"><h3>4H swing structure</h3><small>2 candles left / 2 right · closed candles only</small></div>
+<p class="muted">Independent of the {{ s.rules.smc_setup_minutes }}M setup / {{ s.rules.smc_entry_minutes }}M entry analysis.</p>
+{% if structure.get('end_ms') %}
+<p><strong data-structure-status>{{ 'CURRENT' if current else 'LAST KNOWN · WAITING FOR CURRENT CANDLES' }}</strong> · 4H close {{ money(structure.close,digits[name]) }} · {{ time(structure.end_ms) }}</p>
+<div class="levels structure-levels">
+{% for key,label in [('swing_high','Latest confirmed swing high'),('swing_low','Latest confirmed swing low')] %}{% set point=structure.get(key) %}
+<div><small>{{ label }}</small><strong>{{ money(point.price,digits[name]) if point else 'Pending' }}</strong>
+{% if point %}<small>Pivot {{ time(point.bar_ms) }}<br>Confirmed {{ time(point.known_ms) }}</small>{% else %}<small>Waiting for a confirmed 2 / 2 pivot</small>{% endif %}</div>{% endfor %}
+{% for key,label in [('protected_low','Protected low'),('protected_high','Protected high')] %}{% set point=structure.get(key) %}
+<div><small>{{ label }}</small><strong>{{ money(point.price,digits[name]) if point else 'Pending' }}</strong>
+{% if point %}<small>{{ 'BROKEN · ' ~ time(point.broken_ms) if point.broken_ms != none else 'Intact at the last completed close' }}<br>Established {{ time(point.protected_ms) }}</small>{% else %}<small>Waiting for a qualifying 4H close break</small>{% endif %}</div>{% endfor %}
+</div>
+{% set bos=structure.get('last_break') %}{% if bos %}<p class="muted">Last 4H structure break: <strong>{{ bos.direction|upper }}</strong> through {{ money(bos.level,digits[name]) }} · closed {{ time(bos.end_ms) }}.</p>{% endif %}
+{% set breach=structure.get('last_breach') %}{% if breach %}<p class="muted">Last protected-level break: {{ breach.kind|replace('_',' ') }} {{ money(breach.level,digits[name]) }} · closed {{ time(breach.end_ms) }}.</p>{% endif %}
+{% if structure.get('sweeps') %}<p class="wait">Potential wick sweep on the last 4H candle: {% for sweep in structure.sweeps %}{{ sweep.kind|replace('_',' ') }} {{ money(sweep.level,digits[name]) }}{{ ' · ' if not loop.last else '' }}{% endfor %}. Close returned inside the level.</p>{% endif %}
+{% else %}<p class="wait" data-structure-status>Waiting for confirmed 4H swing measurements.</p>{% endif %}
+{% if structure.get('error') %}<p class="wait">{{ structure.error }}</p>{% endif %}
+<small>A close above a confirmed swing high establishes the intervening lowest wick as the protected low; a close below a swing low establishes the intervening highest wick as the protected high. A smaller swing alone does not replace these levels.</small>
+</section>

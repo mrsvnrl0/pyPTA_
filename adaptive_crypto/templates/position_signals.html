@@ -1,0 +1,28 @@
+{% set nn=p.get('nn_guidance') %}
+<section class="position-target nn-position-guide" data-position-signal data-signal-expires="{{ nn.get('expires_ms',0) if nn else 0 }}">
+<div class="signal-heading"><h3>NN signal for this position</h3><small>Independent of price targets</small></div>
+{% set current=nn and nn.get('expires_ms',0)>now and p.feed_enabled %}
+{{ signal_lights(nn.light if current else none, p.asset ~ ' NN position guidance', states=['STOP LOSS','HOLD','TAKE PROFIT'], names={'STOP LOSS': 'SELL (STOP LOSS)' if p.side=='long' else 'COVER (STOP LOSS)', 'TAKE PROFIT':'SELL (TAKE PROFIT)' if p.side=='long' else 'COVER (TAKE PROFIT)'}) }}
+<p class="position-signal-label"><strong data-position-action>{{ nn.action_label if current else 'WAITING FOR FRESH NN / QUOTE' }}</strong></p>
+{% if nn %}<p class="muted">{{ nn.reason }}</p><small>NN {{ nn.signal or 'pending' }} · 4H candle closed {{ time(nn.signal_end) }}</small>{% endif %}
+<p class="muted">An adverse prediction signals an exit. Green means gross profit relative to your recorded entry; red means a protective exit. Trading costs are not included.</p>
+</section>
+<form class="position-form position-stop-form" method="post" action="{{ url_for('update_position_stop',position_id=p.id) }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<label>Position stop price · USD<input name="stop_price" type="number" min="0.000000000000001" step="any" value="{{ p.get('stop_price') or '' }}" placeholder="{{ measure(p.get('suggested_stop')) if p.get('suggested_stop') else 'Enter a stop price' }}"></label>
+{% if p.get('suggested_stop') %}<small>Suggested SMC stop {{ money(p.suggested_stop,digits.get(p.asset,3)) }}. Enter it above to accept it, or choose your own price.</small>{% endif %}
+{% if p.get("suggested_stop") %}<button type="button" class="secondary" data-suggested-stop="{{ p.suggested_stop }}">Use suggested stop</button>{% endif %}<button type="submit">Save stop</button><p class="form-result" role="status"></p>
+</form>
+<div class="position-target-pair">
+{% for method,title in [('smc','SMC · TP1'),('gex_smc','SMC + GEX · TP2')] %}
+{% set target=p.get('position_targets',{}).get(method) %}{% set guide=p.get('target_guidance',{}).get(method,{}) %}
+<section class="position-target" data-position-signal data-signal-expires="{{ guide.get('expires_ms',0) }}">
+<div class="signal-heading"><h3>{{ title }}</h3><small>{{ 'Nearer target' if method=='smc' else 'Farther target with GEX support' }}</small></div>
+<strong class="target-price">{{ money(target.price,digits.get(p.asset,3)) if target else 'Target pending' }}</strong>
+{{ signal_lights(guide.get('light') if guide.get('expires_ms',0)>now else none, p.asset ~ ' ' ~ title, states=['STOP LOSS','HOLD','TAKE PROFIT'], names={'STOP LOSS':'SELL (STOP LOSS)' if p.side=='long' else 'COVER (STOP LOSS)', 'TAKE PROFIT':'SELL (TAKE PROFIT)' if p.side=='long' else 'COVER (TAKE PROFIT)'}) }}
+<p class="position-signal-label"><strong data-position-action>{{ guide.get('action_label','WAITING') if guide.get('expires_ms',0)>now else 'WAITING FOR FRESH QUOTE' }}</strong></p>
+<small>Position stop {{ money(p.get('stop_price'),digits.get(p.asset,3)) }}{% if not p.get('stop_price') %} · set a stop above to enable this stop-loss light{% endif %}</small>
+{% if target %}<p><small>Saved {{ time(target.selected_ms) }} · {{ target.state|capitalize }}</small></p>{{ target_selection(target.get('selection')) }}{% endif %}
+{% if p.get('target_errors',{}).get(method) %}<p class="wait">{{ p.target_errors[method] }}</p>{% endif %}
+</section>{% endfor %}
+</div>

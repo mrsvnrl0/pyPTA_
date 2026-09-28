@@ -1,0 +1,7 @@
+# CPU inference for installed, hash-validated NN candidate bundles.
+# Validated on Windows x64 / CPython 3.12.14 with ONNX opset 17 exports.
+# Parente-only installations can continue using requirements-neural.txt.
+-r requirements-neural.txt
+flatbuffers==25.12.19
+onnxruntime==1.30.0
+protobuf==7.36.2

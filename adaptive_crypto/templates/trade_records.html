@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Trade Records · pyPTA</title><link rel="stylesheet" href="{{ url_for('static',filename='dashboard.css') }}"></head><body data-refresh="{{ refresh }}" data-generation="{{ generation }}"><main>
+{% with page_title='Trade Records', page_description='Closed paper trades and your manually recorded exits' %}{% include 'page_header.html' %}{% endwith %}
+<section id="paper-trades" class="records-section"><h2>Paper trades</h2>
+{% include 'paper_statistics.html' %}
+<p class="muted">Closed trades from all saved strategy models. View live paper trades on the <a href="{{ url_for('paper_page') }}#live-paper">Paper Trading</a>. Paper P/L includes modeled trading costs.</p>
+{% for error in records.errors %}<p class="danger">{{ error }}</p>{% endfor %}
+{% with paper_rows=records.closed, paper_empty='No closed paper trades yet.' %}{% include 'paper_trade_table.html' %}{% endwith %}
+<details><summary>Saved open trades from retired strategies</summary><p class="muted">Historical records remain open as last recorded. These strategies no longer run.</p>{% with paper_rows=records.active|rejectattr("model_active")|list,paper_empty="No open records from retired strategies." %}{% include "paper_trade_table.html" %}{% endwith %}</details>
+<details><summary>Paper signal delivery history · current model</summary><div class="holdings-table"><table><thead><tr><th>Time</th><th>Channel / status</th><th>Event</th></tr></thead><tbody>{% for e in s.state.outbox|reverse %}<tr><td>{{ time(e.created_ms) }}</td><td>{{ e.kind }} · {{ e.status }}</td><td class="alert-text">{{ e.text }}{% if e.error %}<p class="danger">{{ e.error }}</p>{% endif %}{% if e.commentary %}<p>{{ e.commentary }}</p>{% endif %}</td></tr>{% else %}<tr><td colspan="3">No signal deliveries yet.</td></tr>{% endfor %}</tbody></table></div></details>
+</section>
+<section id="manual-trades" class="records-section"><h2>My manual trades</h2><p class="muted">Closed positions recorded by you. Gross P/L excludes fees, borrowing costs and funding.</p>
+{% set closed=s.holdings.positions|selectattr('status','equalto','closed')|list %}
+{% if closed %}<div class="holdings-table"><table><thead><tr><th>Position</th><th>Quantity</th><th>Entry / exit</th><th>Saved targets / stop</th><th>Gross P/L</th><th>Closed</th></tr></thead><tbody>
+{% for p in closed|sort(attribute='closed_ms',reverse=true) %}<tr><td><strong>{{ p.asset }} · {{ p.side_label }}</strong><br><small>{{ p.symbol }} · #{{ p.id[:8] }}</small></td><td>{{ measure(p.quantity) }}</td><td>{{ money(p.entry,digits.get(p.asset,3)) }} / {{ money(p.close,digits.get(p.asset,3)) }}</td>
+<td>{% if p.get('position_targets') %}{% for method,label in [('smc','SMC TP1'),('gex_smc','SMC + GEX TP2')] %}{% set t=p.position_targets.get(method) %}{{ label }}: {{ money(t.price,digits.get(p.asset,3)) if t else 'Pending' }}<br>{% endfor %}Stop: {{ money(p.get('stop_price'),digits.get(p.asset,3)) }}{% else %}{{ {'smc':'SMC','gex_smc':'SMC + GEX','nn':'NN'}.get(p.get('target_mode','smc')) }}: {{ money(p.take_profit.price,digits.get(p.asset,3)) if p.take_profit else '—' }}{% endif %}</td><td>{{ money(p.get('pnl_usd')) }} ({{ num(p.get('pnl_percent'),2) }}%)</td><td>{{ time(p.closed_ms) }}</td></tr>{% endfor %}</tbody></table></div>{% else %}<p class="muted empty-holdings">No closed manual trades yet.</p>{% endif %}
+</section>{% include 'page_footer.html' %}
+<p id="refresh-status" class="muted" role="status"></p>
+</main><script src="{{ url_for('static',filename='live_refresh.js') }}" defer></script><script src="{{ url_for('static',filename='dashboard.js') }}" defer></script></body></html>

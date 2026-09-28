@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settings · pyPTA</title><link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}"><link rel="stylesheet" href="{{ url_for('static', filename='feed_status.css') }}"></head>
+<body><main class="settings-page">
+<header><div><div class="eyebrow">pyPTA</div><h1>Settings</h1><p class="muted">Currency pairs, NN simulation and SMC analysis</p></div>
+<div class="header-meta muted">Last scan {{ time(s.updated_ms) }}<br>Telegram: {{ 'configured' if s.telegram_configured else 'not configured' }}
+</div></header>
+{% include 'navigation.html' %}
+<p class="notice">Paper Trading runs the NN simulation. SMC settings tune the market measurements on Home and your position targets. These run together without selecting a strategy.</p>
+{% include 'feed_status.html' %}
+{% include 'deribit_settings.html' %}
+{% include 'connection_settings.html' %}
+<script id="saved-strategy" type="application/json">{{ document.strategy|tojson }}</script>
+<form id="settings-form" action="{{ url_for('save_settings') }}" data-revision="{{ revision }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+<section class="settings-card" aria-labelledby="pairs-title"><h2 id="pairs-title">Currency pairs</h2>
+<p class="muted">Use USD pairs, such as BTC/USD. The paper portfolio is denominated in USD. Disable a pair to keep its configuration for later.</p>
+<div id="asset-rows">
+{% for entry in document.assets %}
+<div class="asset-settings-row">
+<label>Asset name<input data-asset-field="name" type="text" value="{{ entry.name }}" required maxlength="30"></label>
+<label>Currency pair<input data-asset-field="symbol" type="text" value="{{ entry.symbol }}" required list="pair-suggestions"></label>
+<label>Status<select data-asset-field="enabled"><option value="true" {{ 'selected' if entry.enabled else '' }}>Enabled</option><option value="false" {{ 'selected' if not entry.enabled else '' }}>Disabled</option></select></label>
+<label>Price decimals<input data-asset-field="price_decimals" type="number" min="0" max="10" step="1" value="{{ entry.price_decimals }}" required></label>
+<button type="button" class="secondary remove-asset" aria-label="Remove {{ entry.name }} pair">Remove</button>
+</div>{% endfor %}</div>
+<button type="button" class="secondary" id="add-asset">Add currency pair</button>
+<datalist id="pair-suggestions">{% for pair in ['BTC/USD','ETH/USD','SOL/USD','XRP/USD','ADA/USD','DOGE/USD','UNI/USD'] %}<option value="{{ pair }}"></option>{% endfor %}</datalist>
+</section>
+<section class="settings-card"><h2>Dashboard refresh</h2><div class="settings-grid"><label>Refresh interval (seconds)<input id="refresh-seconds" type="number" min="5" max="300" step="any" value="{{ document.refresh_seconds }}" required></label></div></section>
+<section class="settings-card" id="model-settings"><h2>Analysis and simulation settings</h2>
+<p class="muted">NN controls paper BUY / HOLD / SELL. SMC computes market entry levels and targets; GEX adds a separate supported TP2 for your actual positions. Earlier strategy histories remain available in Trade Records.</p>
+<p class="muted">Rates and risk values are fractions: 0.005 = 0.5%. Fields ending in bps use basis points. SMC timeframes must be 30/5 or 15/1 minutes. Leave the legacy NN model path empty to use the selected bundled model.</p>
+{% set saved_model_id = document.strategy.get('nn_model_id', 'parente_mlp_v1') %}
+{% set current_model_id = applied_model_id|default('parente_mlp_v1', true) %}
+{% set candidates = model_catalog|default([]) %}
+{% set saved_name = namespace(value=saved_model_id) %}{% set current_name = namespace(value=current_model_id) %}
+{% for candidate in candidates %}{% if candidate.id == saved_model_id %}{% set saved_name.value = candidate.label %}{% endif %}{% if candidate.id == current_model_id %}{% set current_name.value = candidate.label %}{% endif %}{% endfor %}
+<div class="nn-model-picker" aria-labelledby="nn-model-title">
+<h3 id="nn-model-title">NN model</h3>
+<p id="nn-model-help" class="muted">Select a trained model, save settings, then apply them below. The applied model supplies future Home, Paper Trading and Positions classifications, including exits for open paper positions. Existing recorded stops and costs stay with their trades.</p>
+<label for="nn-model-id">Model family and trained version</label>
+<select id="nn-model-id" data-rule="nn_model_id" data-kind="text" data-saved-model-id="{{ saved_model_id }}" data-applied-model-id="{{ current_model_id }}" aria-describedby="nn-model-help nn-model-state nn-model-detail">
+{% set selection = namespace(found=false) %}
+{% for candidate in candidates %}
+{% if candidate.id == saved_model_id %}{% set selection.found = true %}{% endif %}
+<option value="{{ candidate.id }}" {{ 'selected' if candidate.id == saved_model_id else '' }} {{ 'disabled' if not candidate.available and candidate.id != saved_model_id else '' }}>{{ candidate.label }} — {{ candidate.status|default('trained/validated' if candidate.available else 'unavailable') }}</option>
+{% endfor %}
+{% if not selection.found %}<option value="{{ saved_model_id }}" selected>{{ saved_model_id }} — registry status unavailable</option>{% endif %}
+</select>
+<p id="nn-model-state" class="nn-model-state" role="status" aria-live="polite">Saved: <strong>{{ saved_name.value }}</strong> · Applied: <strong>{{ current_name.value }}</strong>{% if saved_model_id != current_model_id %} · Apply saved settings to activate the saved model.{% endif %}</p>
+<div id="nn-model-detail" class="nn-model-detail" aria-live="polite"><p id="nn-model-availability"></p><p id="nn-model-coverage"></p><p id="nn-model-provenance"></p><a id="nn-model-report" hidden>Open validation report</a></div>
+<script id="nn-model-catalog" type="application/json">{{ candidates|tojson }}</script>
+</div>
+{% for group, fields in groups.items() %}
+<details class="settings-group" open><summary>{{ group }}</summary><div class="settings-grid">
+{% for field in fields %}{% if field.key != 'nn_model_id' %}<label{% if field.key == 'nn_limitations' %} id="nn-limitations"{% endif %}>{{ field.label }}<small>{{ field.key }}</small>
+{% if field.key == 'nn_limitations' %}<input type="checkbox" class="nn-limitations-checkbox" data-rule="nn_limitations" data-kind="bool" aria-describedby="nn-limitations-help" {{ 'checked' if field.value else '' }}>
+<span id="nn-limitations-help" class="muted">On: one position per asset, risk limits and automatic stops. Off: each new 4H BUY uses all available paper cash, with no position-count, risk, allocation, spread or minimum-order cap and no new automatic stop. The first eligible BUY can use the whole balance. SELL closes all open positions for that asset. Existing trades keep their stops and costs. Save and apply settings to activate.</span>
+{% elif field.choices %}<select data-rule="{{ field.key }}" data-kind="{{ field.kind }}">{% for value, label in field.choices %}<option value="{{ value }}" {{ 'selected' if value == field.value else '' }}>{{ label }}</option>{% endfor %}</select>
+{% elif field.kind == 'bool' %}<select data-rule="{{ field.key }}" data-kind="bool"><option value="true" {{ 'selected' if field.value else '' }}>Enabled</option><option value="false" {{ 'selected' if not field.value else '' }}>Disabled</option></select>
+{% else %}<input data-rule="{{ field.key }}" data-kind="{{ field.kind }}" type="{{ 'text' if field.kind == 'text' else 'number' }}" {% if field.kind != 'text' %}step="{{ '1' if field.kind == 'int' else 'any' }}" required{% endif %} value="{{ field.value }}">{% endif %}
+</label>{% endif %}{% endfor %}</div></details>{% endfor %}</section>
+<div class="settings-save-bar"><div class="form-actions"><button type="submit">Save settings</button><button type="reset" class="secondary">Discard unsaved edits</button><span id="unsaved-status" class="muted">No unsaved edits</span></div>
+<p id="settings-result" role="status" aria-live="polite"></p></div>
+</form>
+{% include 'strategy_controls.html' %}
+{% include 'restore_controls.html' %}
+<section class="settings-card" id="restart-controls"><h2>Restart dashboard</h2>
+<p class="muted">Reload saved settings and the NN paper simulation and market analysis. Current scans and alert deliveries finish before monitoring restarts. Saved balances and history are retained.</p>
+<form id="restart-form" method="post" action="{{ url_for('restart_dashboard') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button type="submit" {% if not restart_available %}disabled{% endif %}>Restart dashboard</button></form>
+{% if not restart_available %}<p class="muted">Launch pyPTA through the dashboard launcher to enable restart.</p>{% endif %}
+<p id="restart-result" role="status" aria-live="polite"></p>
+</section>
+{% include 'page_footer.html' %}
+</main><script src="{{ url_for('static', filename='settings.js') }}" defer></script><script src="{{ url_for('static', filename='deribit_settings.js') }}" defer></script><script src="{{ url_for('static', filename='connection_settings.js') }}" defer></script><script src="{{ url_for('static', filename='restore.js') }}" defer></script><script src="{{ url_for('static', filename='feed_status.js') }}" defer></script></body></html>
